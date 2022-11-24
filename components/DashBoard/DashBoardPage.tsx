@@ -6,20 +6,28 @@ import DashBoardMain from './DashBoardMain';
 import Colors from '../../constants/colors';
 import { DashBoardPageProps } from './props';
 import { useState } from 'react';
+import DashBoardSelectModal from './DashBoardSelectModal';
 
 export default function DashBoardPage({ handleAuthClick }: DashBoardPageProps) {
 	const [isUIOpen, SetIsUIOpen] = useState(true);
+	const [isOpenSelectModal, setIsOpenSelectModal] = useState(false);
 
 	const onClickToggleUI = () => {
 		SetIsUIOpen(!isUIOpen);
 	};
 
+	const onClickOpenSelect = () => setIsOpenSelectModal(true);
+	const onClickCloseSelect = () => setIsOpenSelectModal(false);
+
 	return (
 		<PageContainer>
 			<DashBoardHeader handleAuthClick={handleAuthClick} onClickToggleUI={onClickToggleUI} />
-			<DashBoardExplorer isUIOpen={isUIOpen} />
+			<DashBoardExplorer isUIOpen={isUIOpen} onClickOpenSelect={onClickOpenSelect} />
 			<DashBoardMain />
 			<DashBoardInspector isUIOpen={isUIOpen} />
+			{isOpenSelectModal && (
+				<DashBoardSelectModal onCancel={onClickCloseSelect} onConfirm={console.log} />
+			)}
 		</PageContainer>
 	);
 }

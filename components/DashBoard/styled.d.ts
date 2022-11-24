@@ -6,3 +6,7 @@ export interface DrawerProps {
 export interface DrawerTriggerAreaProps {
 	isLeft: boolean;
 }
+
+export interface SelectSectionProps {
+	isResult?: boolean;
+}

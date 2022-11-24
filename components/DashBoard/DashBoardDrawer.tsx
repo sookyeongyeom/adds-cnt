@@ -29,6 +29,7 @@ const DrawerContainer = styled.div<DrawerProps>`
 	border-right: ${(props) => props.isLeft && `0.1rem solid ${Colors.gray300}`};
 	border-left: ${(props) => !props.isLeft && `0.1rem solid ${Colors.gray300}`};
 	background-color: ${Colors.blue100};
+	z-index: 10;
 `;
 
 // const CloseTriggerArea = styled.div<DrawerTriggerAreaProps>`

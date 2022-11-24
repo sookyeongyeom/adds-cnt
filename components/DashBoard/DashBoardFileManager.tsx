@@ -2,24 +2,22 @@ import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Button from '../elements/Button';
 import { ButtonTypes } from '../../constants/buttons';
-import IconButton from '../elements/IconButton';
-import { svgHelp, svgRefresh } from '../../constants/svgs';
 import Fonts from '../../constants/fonts';
 import { ChildrenType } from '../../@types/base';
+import { DashBoardFileManagerProps } from './props';
 
-export default function DashBoardFileManager() {
+export default function DashBoardFileManager({ onClickOpenSelect }: DashBoardFileManagerProps) {
 	return (
 		<FileManagerContainer>
 			<Title>파일관리자</Title>
-			<FileMeta>
-				<IconButton onClick={console.log}>{svgHelp}</IconButton>
-				<IconButton onClick={console.log}>{svgRefresh}</IconButton>
-			</FileMeta>
 			<FileAction>
+				<Button onClick={console.log} buttonType={ButtonTypes.small}>
+					도움말
+				</Button>
 				<Button onClick={console.log} buttonType={ButtonTypes.small}>
 					파일업로드
 				</Button>
-				<Button onClick={console.log} buttonType={ButtonTypes.small}>
+				<Button onClick={onClickOpenSelect} buttonType={ButtonTypes.small}>
 					파일선택
 				</Button>
 			</FileAction>
@@ -53,18 +51,10 @@ const Title = styled.div`
 	color: ${Colors.white};
 `;
 
-const FileMeta = styled.div`
-	background-color: ${Colors.white};
-	justify-content: space-between;
-	padding: 1rem;
-	padding-bottom: 0;
-`;
-
 const FileAction = styled.div`
 	background-color: ${Colors.white};
 	justify-content: space-evenly;
 	padding: 1rem;
-	padding-top: 0;
 `;
 
 const FileStatusContainer = styled.div`

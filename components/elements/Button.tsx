@@ -12,7 +12,7 @@ export default function Button({ children, onClick, buttonType }: ButtonProps) {
 	);
 }
 
-const ButtonContainer = styled.div<ButtonContainerProps>`
+const ButtonContainer = styled.button<ButtonContainerProps>`
 	${(props) => props.buttonType === ButtonTypes.medium && ButtonStyles.medium}
 	${(props) => props.buttonType === ButtonTypes.small && ButtonStyles.small}
 	background-color: ${Colors.blue500};

@@ -21,4 +21,14 @@ export interface DashBoardHeaderProps {
 
 export interface DashBoardExplorerAndInspectorProps {
 	isUIOpen: boolean;
+	onClickOpenSelect?: () => void;
+}
+
+export interface DashBoardModalProps {
+	onCancel: () => void;
+	onConfirm: () => void;
+}
+
+export interface DashBoardFileManagerProps {
+	onClickOpenSelect: () => void;
 }
