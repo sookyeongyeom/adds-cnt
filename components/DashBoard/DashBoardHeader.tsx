@@ -5,22 +5,53 @@ import Button from '../elements/Button';
 import { ButtonTypes } from '../../constants/buttons';
 import Fonts from '../../constants/fonts';
 import { DashBoardHeaderProps } from './props';
+import { useAuthTokenValue } from '../../contexts/AuthTokenProviders';
+import React, { useState } from 'react';
 
 export default function DashBoardHeader({
 	handleAuthClick,
+	handleSignoutClick,
 	onClickToggleUI,
+	profilePhoto,
 }: DashBoardHeaderProps) {
+	const authTokenValue = useAuthTokenValue();
+	const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+
+	const onClickDropDownOpen = () => {
+		setIsDropDownOpen(true);
+	};
+
+	const onBlurDropDown = () => {
+		setIsDropDownOpen(false);
+	};
+
+	const onClickLogout = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		handleSignoutClick();
+		setIsDropDownOpen(false);
+	};
+
 	return (
 		<HeaderContainer>
 			<Logo>
-				CNT<span>powered by soo</span>
+				CNT<span>powered by playidea</span>
 			</Logo>
 			<Button onClick={onClickToggleUI} buttonType={ButtonTypes.medium}>
 				UI
 			</Button>
-			<Button onClick={handleAuthClick} buttonType={ButtonTypes.medium}>
-				로그인해주세요
-			</Button>
+			{!authTokenValue && (
+				<Button onClick={handleAuthClick} buttonType={ButtonTypes.medium}>
+					LOGIN
+				</Button>
+			)}
+			{authTokenValue && (
+				<>
+					<Photo onClick={onClickDropDownOpen} onBlur={onBlurDropDown}>
+						<img src={profilePhoto} />
+						{isDropDownOpen && <DropDown onClick={onClickLogout}>LOGOUT</DropDown>}
+					</Photo>
+				</>
+			)}
 		</HeaderContainer>
 	);
 }
@@ -30,12 +61,25 @@ const HeaderContainer = styled.div`
 	height: ${Sizes.headerHeight};
 	position: fixed;
 	top: 0;
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
 	align-items: center;
 	padding: 0 3rem;
 	border-bottom: 0.1rem solid ${Colors.gray300};
 	background-color: ${Colors.white};
+	z-index: 20;
+
+	button {
+		width: fit-content;
+	}
+
+	button:first-of-type {
+		margin: 0 auto;
+	}
+
+	button:nth-of-type(2) {
+		margin-left: auto;
+	}
 `;
 
 const Logo = styled.div`
@@ -46,5 +90,38 @@ const Logo = styled.div`
 		${Fonts.body14regular}
 		margin-left: 0.5rem;
 		color: ${Colors.blue500};
+	}
+`;
+
+const Photo = styled.button`
+	display: block;
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50%;
+	overflow: hidden;
+	display: flex;
+	margin-left: auto;
+	cursor: pointer;
+`;
+
+const DropDown = styled.div`
+	${Fonts.button16bold}
+	background-color: ${Colors.red500};
+	color: ${Colors.white};
+	border-radius: 0.6rem;
+	box-shadow: 6px 7px 16px rgba(106, 106, 106, 0.3);
+	position: absolute;
+	right: 2rem;
+	top: 6.5rem;
+	padding: 1.3rem 1.8rem;
+	text-align: center;
+	cursor: pointer;
+
+	&:hover {
+		background-color: ${Colors.red700};
+	}
+
+	&:active {
+		background-color: ${Colors.red900};
 	}
 `;

@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 import * as XLSX from 'xlsx';
 import DashBoardPage from '../components/DashBoard/DashBoardPage';
+import { useAuthTokenActions } from '../contexts/AuthTokenProviders';
 
 declare let gapi: any;
 declare let google: any;
@@ -10,6 +11,8 @@ declare let google: any;
 export default function Home() {
 	const [tokenClient, setTokenClient] = useState(null) as any;
 	const [authToken, setAuthToken] = useState('');
+	const authTokenActions = useAuthTokenActions();
+	const [profilePhoto, setProfilePhoto] = useState('');
 
 	const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
 	const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
@@ -18,12 +21,27 @@ export default function Home() {
 
 	useEffect(() => {
 		const authToken = localStorage.getItem('authToken');
-		if (authToken) setAuthToken(authToken);
+		const profilePhoto = localStorage.getItem('profilePhoto');
+		if (authToken) {
+			setAuthToken(authToken);
+			authTokenActions.createAuthToken(authToken);
+		}
+		if (profilePhoto) setProfilePhoto(profilePhoto);
 	}, []);
 
 	useEffect(() => {
-		if (authToken) localStorage.setItem('authToken', authToken);
+		if (authToken) {
+			localStorage.setItem('authToken', authToken);
+			authTokenActions.createAuthToken(authToken);
+		} else {
+			localStorage.removeItem('authToken');
+			authTokenActions.removeAuthToken();
+		}
 	}, [authToken]);
+
+	useEffect(() => {
+		if (profilePhoto) localStorage.setItem('profilePhoto', profilePhoto);
+	}, [profilePhoto]);
 
 	function gapiLoaded() {
 		gapi.load('client', initializeGapiClient);
@@ -52,6 +70,7 @@ export default function Home() {
 			}
 			const token = gapi.client.getToken().access_token;
 			setAuthToken(token);
+			getProfile();
 		};
 
 		if (gapi.client.getToken() === null) {
@@ -66,7 +85,6 @@ export default function Home() {
 			google.accounts.oauth2.revoke(authToken);
 			gapi.client.setToken('');
 			setAuthToken('');
-			localStorage.removeItem('authToken');
 		}
 	}
 
@@ -151,10 +169,8 @@ export default function Home() {
 				'https://www.googleapis.com/oauth2/v1/userinfo?alt=json',
 			);
 			console.log(response);
-			const picture = response.result.picture;
-			const imgElement = document.createElement('img');
-			imgElement.src = picture;
-			document.body.appendChild(imgElement);
+			const photo = response.result.picture;
+			setProfilePhoto(photo);
 		} catch (err: any) {
 			console.log(err);
 			return;
@@ -172,7 +188,11 @@ export default function Home() {
 			{authToken && <button onClick={handleSignoutClick}>SignOut</button>}
 			{authToken && <button onClick={listFiles}>데이터</button>}
 			{authToken && <button onClick={getProfile}>프로필</button>} */}
-			<DashBoardPage handleAuthClick={handleAuthClick} />
+			<DashBoardPage
+				handleAuthClick={handleAuthClick}
+				handleSignoutClick={handleSignoutClick}
+				profilePhoto={profilePhoto}
+			/>
 		</>
 	);
 }

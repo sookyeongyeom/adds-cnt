@@ -8,7 +8,11 @@ import { DashBoardPageProps } from './props';
 import { useState } from 'react';
 import DashBoardSelectModal from './DashBoardSelectModal';
 
-export default function DashBoardPage({ handleAuthClick }: DashBoardPageProps) {
+export default function DashBoardPage({
+	handleAuthClick,
+	handleSignoutClick,
+	profilePhoto,
+}: DashBoardPageProps) {
 	const [isUIOpen, SetIsUIOpen] = useState(true);
 	const [isOpenSelectModal, setIsOpenSelectModal] = useState(false);
 
@@ -21,7 +25,12 @@ export default function DashBoardPage({ handleAuthClick }: DashBoardPageProps) {
 
 	return (
 		<PageContainer>
-			<DashBoardHeader handleAuthClick={handleAuthClick} onClickToggleUI={onClickToggleUI} />
+			<DashBoardHeader
+				handleAuthClick={handleAuthClick}
+				handleSignoutClick={handleSignoutClick}
+				onClickToggleUI={onClickToggleUI}
+				profilePhoto={profilePhoto}
+			/>
 			<DashBoardExplorer isUIOpen={isUIOpen} onClickOpenSelect={onClickOpenSelect} />
 			<DashBoardMain />
 			<DashBoardInspector isUIOpen={isUIOpen} />

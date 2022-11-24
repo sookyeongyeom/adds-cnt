@@ -4,9 +4,9 @@ import Colors from '../../constants/colors';
 import { ButtonStyles, ButtonTypes } from '../../constants/buttons';
 import { ButtonContainerProps } from './styled';
 
-export default function Button({ children, onClick, buttonType }: ButtonProps) {
+export default function Button({ children, onClick, buttonType, isHidden }: ButtonProps) {
 	return (
-		<ButtonContainer onClick={onClick} buttonType={buttonType}>
+		<ButtonContainer onClick={onClick} buttonType={buttonType} isHidden={isHidden}>
 			{children}
 		</ButtonContainer>
 	);
@@ -19,6 +19,7 @@ const ButtonContainer = styled.button<ButtonContainerProps>`
 	color: ${Colors.white};
 	border-radius: 0.6rem;
 	cursor: pointer;
+	visibility: ${(props) => props.isHidden && 'hidden'};
 
 	&:hover {
 		background-color: ${Colors.blue700};

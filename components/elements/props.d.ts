@@ -7,8 +7,9 @@ export interface ModalProps extends ChildrenType {
 }
 
 export interface ButtonProps extends ChildrenType {
-	onClick: () => void;
+	onClick: React.MouseEventHandler;
 	buttonType: string;
+	isHidden?: boolean;
 }
 
 export interface IconButtonProps extends ChildrenType {

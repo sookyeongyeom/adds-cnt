@@ -12,11 +12,15 @@ export interface DashBoardCategoryProps {
 
 export interface DashBoardPageProps {
 	handleAuthClick: () => void;
+	handleSignoutClick: () => void;
+	profilePhoto: string;
 }
 
 export interface DashBoardHeaderProps {
 	handleAuthClick: () => void;
+	handleSignoutClick: () => void;
 	onClickToggleUI: () => void;
+	profilePhoto: string;
 }
 
 export interface DashBoardExplorerAndInspectorProps {
