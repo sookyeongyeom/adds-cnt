@@ -1,7 +1,8 @@
-import { MutableRefObject, useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
 import * as XLSX from 'xlsx';
+import DashBoardPage from '../components/DashBoard/DashBoardPage';
 
 declare let gapi: any;
 declare let google: any;
@@ -9,7 +10,6 @@ declare let google: any;
 export default function Home() {
 	const [tokenClient, setTokenClient] = useState(null) as any;
 	const [authToken, setAuthToken] = useState('');
-	const contentPre = useRef() as MutableRefObject<HTMLPreElement>;
 
 	const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
 	const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
@@ -65,7 +65,6 @@ export default function Home() {
 		if (authToken) {
 			google.accounts.oauth2.revoke(authToken);
 			gapi.client.setToken('');
-			contentPre.current.innerText = '';
 			setAuthToken('');
 			localStorage.removeItem('authToken');
 		}
@@ -85,18 +84,19 @@ export default function Home() {
 				fields: 'files(id, name)',
 			});
 		} catch (err: any) {
-			contentPre.current.innerText = err.message;
+			console.log(err.message);
 			return;
 		}
 		const files = response.result.files;
 		if (!files || files.length == 0) {
-			contentPre.current.innerText = 'No files found.';
+			console.log('No files found');
 			return;
 		}
 		const output = files.reduce(
 			(str: any, file: any) => `${str}${file.name} (${file.id})\n`,
 			'Files:\n',
 		);
+		console.log(output);
 
 		try {
 			const request = await gapi.client.drive.files.get({
@@ -116,19 +116,10 @@ export default function Home() {
 				type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 			});
 
-			const url = URL.createObjectURL(file);
-			const anchorElement = document.createElement('a');
-			anchorElement.innerText = '다운로드하려면 클릭';
-			document.body.appendChild(anchorElement);
-			anchorElement.download = 'some file';
-			anchorElement.href = url;
-
 			readExcel(file);
 		} catch (e: any) {
 			console.log(e.message);
 		}
-
-		contentPre.current.innerText = output;
 	}
 
 	function readExcel(file: any) {
@@ -177,11 +168,11 @@ export default function Home() {
 			</Head>
 			<Script async defer src='https://apis.google.com/js/api.js' onLoad={gapiLoaded}></Script>
 			<Script async defer src='https://accounts.google.com/gsi/client' onLoad={gisLoaded}></Script>
-			{!authToken && <button onClick={handleAuthClick}>Authorize</button>}
+			{/* {!authToken && <button onClick={handleAuthClick}>Authorize</button>}
 			{authToken && <button onClick={handleSignoutClick}>SignOut</button>}
 			{authToken && <button onClick={listFiles}>데이터</button>}
-			{authToken && <button onClick={getProfile}>프로필</button>}
-			<pre ref={contentPre}></pre>
+			{authToken && <button onClick={getProfile}>프로필</button>} */}
+			<DashBoardPage handleAuthClick={handleAuthClick} />
 		</>
 	);
 }
