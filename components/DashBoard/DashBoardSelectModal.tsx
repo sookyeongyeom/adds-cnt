@@ -6,17 +6,26 @@ import Colors from '../../constants/colors';
 import { SelectSectionProps } from './styled';
 import { svgRefresh } from '../../constants/svgs';
 import IconButton from '../elements/IconButton';
+import { useResultsValue } from '../../contexts/ResultsProviders';
 
-export default function DashBoardSelectModal({ onCancel, onConfirm }: DashBoardModalProps) {
+export default function DashBoardSelectModal({
+	onCancel,
+	onConfirm,
+	onRefresh,
+}: DashBoardModalProps) {
+	const resultsValue = useResultsValue();
+
 	return (
 		<Modal onCancel={onCancel} onConfirm={onConfirm}>
 			<SelectContainer>
 				<IconButtonWrapper>
-					<IconButton onClick={console.log}>{svgRefresh}새로고침</IconButton>
+					<IconButton onClick={onRefresh}>{svgRefresh}새로고침</IconButton>
 				</IconButtonWrapper>
 				<SelectSection isResult={true}>
 					<h1>검사결과</h1>
-					<p>result 폴더에 포함된 n개의 파일이 자동으로 선택됩니다.</p>
+					<p>
+						Result 폴더에 포함된 {Object.keys(resultsValue).length}개의 파일이 자동으로 선택됩니다.
+					</p>
 				</SelectSection>
 				<SelectSection>
 					<h1>신상정보</h1>

@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
+import { useProfilesValue } from '../../contexts/ProfilesProviders';
+import { useCurrentPatientActions } from '../../contexts/CurrentPatientProviders';
 
 export default function DashBoardPatientsList() {
+	const profilesValue = useProfilesValue();
+	const currentPatientsActions = useCurrentPatientActions();
+
 	return (
 		<PatientsListContainer>
-			<PatientsCount>총 0명</PatientsCount>
+			<PatientsCount>총 {Object.keys(profilesValue).length}명</PatientsCount>
 			<Patient />
 			<Patient />
 			<Patient />

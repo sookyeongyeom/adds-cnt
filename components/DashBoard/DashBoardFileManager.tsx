@@ -3,10 +3,12 @@ import Colors from '../../constants/colors';
 import Button from '../elements/Button';
 import { ButtonTypes } from '../../constants/buttons';
 import Fonts from '../../constants/fonts';
-import { ChildrenType } from '../../@types/base';
-import { DashBoardFileManagerProps } from './props';
+import { DashBoardFileManagerProps, FileStatusProps } from './props';
+import { useResultsValue } from '../../contexts/ResultsProviders';
 
 export default function DashBoardFileManager({ onClickOpenSelect }: DashBoardFileManagerProps) {
+	const resultsValue = useResultsValue();
+
 	return (
 		<FileManagerContainer>
 			<Title>파일관리자</Title>
@@ -21,18 +23,18 @@ export default function DashBoardFileManager({ onClickOpenSelect }: DashBoardFil
 					파일선택
 				</Button>
 			</FileAction>
-			<FileStatus>검사결과</FileStatus>
-			<FileStatus>신상정보</FileStatus>
-			<FileStatus>결과해석</FileStatus>
+			<FileStatus title={'검사결과'}>{Object.keys(resultsValue).length}개의 데이터</FileStatus>
+			<FileStatus title={'신상정보'}>신상정보</FileStatus>
+			<FileStatus title={'결과해석'}>결과해석</FileStatus>
 		</FileManagerContainer>
 	);
 }
 
-function FileStatus({ children }: ChildrenType) {
+function FileStatus({ children, title }: FileStatusProps) {
 	return (
 		<FileStatusContainer>
-			{children}
-			<FileName>선택된 파일이 없습니다.</FileName>
+			{title}
+			<FileName>{children}</FileName>
 		</FileStatusContainer>
 	);
 }

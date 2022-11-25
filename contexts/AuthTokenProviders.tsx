@@ -16,10 +16,6 @@ export default function AuthTokenProviders({ children }: ChildrenType) {
 		},
 	};
 
-	useEffect(() => {
-		console.log(`토큰 컨텍스트: ${authToken}`);
-	}, [authToken]);
-
 	return (
 		<AuthTokenActionsContext.Provider value={actions}>
 			<AuthTokenValueContext.Provider value={authToken}>{children}</AuthTokenValueContext.Provider>

@@ -12,6 +12,7 @@ export default function DashBoardPage({
 	handleAuthClick,
 	handleSignoutClick,
 	profilePhoto,
+	listResultsFiles,
 }: DashBoardPageProps) {
 	const [isUIOpen, SetIsUIOpen] = useState(true);
 	const [isOpenSelectModal, setIsOpenSelectModal] = useState(false);
@@ -35,7 +36,11 @@ export default function DashBoardPage({
 			<DashBoardMain />
 			<DashBoardInspector isUIOpen={isUIOpen} />
 			{isOpenSelectModal && (
-				<DashBoardSelectModal onCancel={onClickCloseSelect} onConfirm={console.log} />
+				<DashBoardSelectModal
+					onCancel={onClickCloseSelect}
+					onConfirm={console.log}
+					onRefresh={listResultsFiles}
+				/>
 			)}
 		</PageContainer>
 	);
