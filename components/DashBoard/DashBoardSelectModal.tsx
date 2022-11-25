@@ -66,7 +66,7 @@ const SelectSection = styled.div<SelectSectionProps>`
 	}
 
 	p {
-		color: ${(props) => props.isResult && Colors.gray400};
+		color: ${Colors.gray400};
 		border: 0.1rem solid ${Colors.gray300};
 		border-radius: 0.6rem;
 		padding: 1rem;

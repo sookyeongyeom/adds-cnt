@@ -5,9 +5,8 @@ export interface DashBoardDrawerProps extends ChildrenType {
 	isUIOpen: boolean;
 }
 
-export interface DashBoardCategoryProps {
+export interface DashBoardCategoryProps extends ChildrenType {
 	title: string;
-	rows: string[];
 }
 
 export interface DashBoardPageProps {
@@ -41,4 +40,8 @@ export interface DashBoardFileManagerProps {
 
 export interface FileStatusProps extends ChildrenType {
 	title: string;
+}
+
+export interface PatientProps extends ChildrenType {
+	patientId: string;
 }

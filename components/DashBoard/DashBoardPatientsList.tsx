@@ -2,24 +2,32 @@ import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import { useProfilesValue } from '../../contexts/ProfilesProviders';
+import { PatientProps } from './props';
 import { useCurrentPatientActions } from '../../contexts/CurrentPatientProviders';
 
 export default function DashBoardPatientsList() {
 	const profilesValue = useProfilesValue();
-	const currentPatientsActions = useCurrentPatientActions();
 
 	return (
 		<PatientsListContainer>
 			<PatientsCount>총 {Object.keys(profilesValue).length}명</PatientsCount>
-			<Patient />
-			<Patient />
-			<Patient />
+			{Object.keys(profilesValue).map((v, i) => (
+				<Patient key={i} patientId={v}>
+					{v} {profilesValue[v].getName()}
+				</Patient>
+			))}
 		</PatientsListContainer>
 	);
 }
 
-function Patient() {
-	return <PatientContainer>쨔쟌</PatientContainer>;
+function Patient({ children, patientId }: PatientProps) {
+	const currentPatientActions = useCurrentPatientActions();
+
+	const onClick = (patientId: string) => {
+		currentPatientActions.updateCurrentPatient(patientId);
+	};
+
+	return <PatientContainer onClick={() => onClick(patientId)}>{children}</PatientContainer>;
 }
 
 const PatientsListContainer = styled.div``;
@@ -37,4 +45,5 @@ const PatientContainer = styled.div`
 	background-color: white;
 	padding: 2rem;
 	border-bottom: 0.1rem solid ${Colors.gray300};
+	cursor: pointer;
 `;

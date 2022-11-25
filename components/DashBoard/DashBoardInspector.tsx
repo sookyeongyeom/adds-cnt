@@ -7,12 +7,18 @@ import DashBoardDrawer from './DashBoardDrawer';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import { DashBoardExplorerAndInspectorProps } from './props';
+import { useCurrentPatientValue } from '../../contexts/CurrentPatientProviders';
+import { useProfilesValue } from '../../contexts/ProfilesProviders';
 
 export default function DashBoardInspector({ isUIOpen }: DashBoardExplorerAndInspectorProps) {
+	const currentPatientValue = useCurrentPatientValue();
+	const profilesValue = useProfilesValue();
+
 	return (
 		<DashBoardDrawer isLeft={false} isUIOpen={isUIOpen}>
 			<PatientMeta>
-				이아름<PatiendId>020993</PatiendId>
+				{profilesValue[currentPatientValue] && profilesValue[currentPatientValue].getName()}
+				<PatiendId>{currentPatientValue}</PatiendId>
 			</PatientMeta>
 			<DashBoardProfile />
 			<DashBoardResult />

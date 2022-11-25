@@ -259,8 +259,8 @@ export default function Home() {
 			});
 
 			const profiles = new Profiles(name, age, sex);
-			profilesTemp[patientId] = profiles;
-			resultsTemp[patientId] = results;
+			profilesTemp[`${patientId}`] = profiles;
+			resultsTemp[`${patientId}`] = results;
 			isFinishedStatus[idx] = true;
 			if (!isFinishedStatus.filter((v: boolean) => v === false).length) {
 				resultsActions.updateResults(resultsTemp);

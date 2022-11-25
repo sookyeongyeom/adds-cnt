@@ -3,13 +3,11 @@ import Colors from '../../constants/colors';
 import { DashBoardCategoryProps } from './props';
 import Fonts from '../../constants/fonts';
 
-export default function DashBoardCategory({ title, rows }: DashBoardCategoryProps) {
+export default function DashBoardCategory({ title, children }: DashBoardCategoryProps) {
 	return (
 		<CategoryContainer>
 			<Title>{title}</Title>
-			{rows.map((v, i) => (
-				<div key={i}>{v}</div>
-			))}
+			{children}
 		</CategoryContainer>
 	);
 }
