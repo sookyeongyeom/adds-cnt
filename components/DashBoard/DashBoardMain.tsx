@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 import Sizes from '../../constants/sizes';
 import ReportTotal from '../Report/ReportTotal';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import IconButton from '../elements/IconButton';
 import { DoNotPrint } from '../../constants/styled';
-import { useRouter } from 'next/router';
 
 export default function DashBoardMain() {
-	const router = useRouter();
 	const [page, setPage] = useState(1);
 
 	const toPrev = () => {
@@ -19,14 +17,6 @@ export default function DashBoardMain() {
 	};
 
 	const onClickPrint = () => window.print();
-
-	useEffect(() => {
-		console.log(location.hash);
-		router.push({
-			pathname: location.pathname,
-			hash: `#page${page}`,
-		});
-	}, [page]);
 
 	return (
 		<MainContainer>

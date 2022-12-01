@@ -3,6 +3,7 @@ import ReportPage1 from './ReportPage1';
 import { ReportTotalProps } from './props';
 import ReportPage2 from './ReportPage2';
 import ReportPage3 from './ReportPage3';
+import Colors from '../../constants/colors';
 
 export default function ReportTotal({ page }: ReportTotalProps) {
 	return (
@@ -17,12 +18,14 @@ export default function ReportTotal({ page }: ReportTotalProps) {
 const TotalContainer = styled.div`
 	margin: 0 auto;
 
-	div {
-		background-color: pink;
+	> div {
 		width: 210mm;
 		height: 297mm;
 		margin: 0 auto;
 		margin-bottom: 3rem;
+		position: relative;
+		overflow: hidden;
+		background-color: ${Colors.white};
 
 		@media print {
 			margin: 0;
