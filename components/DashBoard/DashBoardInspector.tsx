@@ -16,13 +16,19 @@ export default function DashBoardInspector({ isUIOpen }: DashBoardExplorerAndIns
 
 	return (
 		<DashBoardDrawer isLeft={false} isUIOpen={isUIOpen}>
-			<PatientMeta>
-				{profilesValue[currentPatientValue] && profilesValue[currentPatientValue].getName()}
-				<PatiendId>{currentPatientValue}</PatiendId>
-			</PatientMeta>
-			<DashBoardProfile />
-			<DashBoardResult />
-			<DashBoardComment />
+			{currentPatientValue ? (
+				<>
+					<PatientMeta>
+						{profilesValue[currentPatientValue] && profilesValue[currentPatientValue].getName()}
+						<PatiendId>{currentPatientValue}</PatiendId>
+					</PatientMeta>
+					<DashBoardProfile />
+					<DashBoardResult />
+					<DashBoardComment />
+				</>
+			) : (
+				'좌측 사이드바에서 피험자를 선택해주세요.'
+			)}
 		</DashBoardDrawer>
 	);
 }

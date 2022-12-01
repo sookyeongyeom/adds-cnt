@@ -20,6 +20,6 @@ const CategoryContainer = styled.div`
 
 const Title = styled.div`
 	${Fonts.heading18bold}
-	margin-bottom: 1rem;
+	margin-bottom: 1.3rem;
 	color: ${Colors.blue700};
 `;

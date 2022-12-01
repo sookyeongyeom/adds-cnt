@@ -1,7 +1,7 @@
-import styled from 'styled-components';
 import DashBoardCategory from './DashBoardCategory';
 import { useResultsValue } from '../../contexts/ResultsProviders';
 import { useCurrentPatientValue } from '../../contexts/CurrentPatientProviders';
+import { CategoryLabel, CategoryLine, CategorySection } from '../../constants/styled';
 
 export default function DashBoardResult() {
 	const resultsValue = useResultsValue();
@@ -9,41 +9,55 @@ export default function DashBoardResult() {
 
 	return (
 		<DashBoardCategory title='Result'>
-			<div>Card Sorting</div>
-			<div>
-				{resultsValue[currentPatientValue] &&
-					resultsValue[currentPatientValue].getCardSorting()?.getTTtc()}
-			</div>
-			<div>
-				{resultsValue[currentPatientValue] &&
-					resultsValue[currentPatientValue].getCardSorting()?.getPEtc()}
-			</div>
-			<div>
-				{resultsValue[currentPatientValue] &&
-					resultsValue[currentPatientValue].getCardSorting()?.getNEtc()}
-			</div>
-			<div>Word Color</div>
-			<div>
-				{resultsValue[currentPatientValue] &&
-					resultsValue[currentPatientValue].getWordColor()?.getTC1()}
-			</div>
-			<div>
-				{resultsValue[currentPatientValue] &&
-					resultsValue[currentPatientValue].getWordColor()?.getTC2()}
-			</div>
-			<div>
-				{resultsValue[currentPatientValue] &&
-					resultsValue[currentPatientValue].getWordColor()?.getTC5()}
-			</div>
-			<div>Trail Making</div>
-			<div>
-				{resultsValue[currentPatientValue] &&
-					resultsValue[currentPatientValue].getTrailMaking()?.getTC1()}
-			</div>
-			<div>
-				{resultsValue[currentPatientValue] &&
-					resultsValue[currentPatientValue].getTrailMaking()?.getTC2()}
-			</div>
+			<CategorySection>
+				<div>Card Sorting</div>
+				<CategoryLine>
+					<CategoryLabel>TTtc</CategoryLabel>
+					{resultsValue[currentPatientValue] &&
+						resultsValue[currentPatientValue].getCardSorting()?.getTTtc()}
+				</CategoryLine>
+				<CategoryLine>
+					<CategoryLabel>PEtc</CategoryLabel>
+					{resultsValue[currentPatientValue] &&
+						resultsValue[currentPatientValue].getCardSorting()?.getPEtc()}
+				</CategoryLine>
+				<CategoryLine>
+					<CategoryLabel>NEtc</CategoryLabel>
+					{resultsValue[currentPatientValue] &&
+						resultsValue[currentPatientValue].getCardSorting()?.getNEtc()}
+				</CategoryLine>
+			</CategorySection>
+			<CategorySection>
+				<div>Word Color</div>
+				<CategoryLine>
+					<CategoryLabel>TC1</CategoryLabel>
+					{resultsValue[currentPatientValue] &&
+						resultsValue[currentPatientValue].getWordColor()?.getTC1()}
+				</CategoryLine>
+				<CategoryLine>
+					<CategoryLabel>TC2</CategoryLabel>
+					{resultsValue[currentPatientValue] &&
+						resultsValue[currentPatientValue].getWordColor()?.getTC2()}
+				</CategoryLine>
+				<CategoryLine>
+					<CategoryLabel>TC5</CategoryLabel>
+					{resultsValue[currentPatientValue] &&
+						resultsValue[currentPatientValue].getWordColor()?.getTC5()}
+				</CategoryLine>
+			</CategorySection>
+			<CategorySection>
+				<div>Trail Making</div>
+				<CategoryLine>
+					<CategoryLabel>TC1</CategoryLabel>
+					{resultsValue[currentPatientValue] &&
+						resultsValue[currentPatientValue].getTrailMaking()?.getTC1()}
+				</CategoryLine>
+				<CategoryLine>
+					<CategoryLabel>TC2</CategoryLabel>
+					{resultsValue[currentPatientValue] &&
+						resultsValue[currentPatientValue].getTrailMaking()?.getTC2()}
+				</CategoryLine>
+			</CategorySection>
 		</DashBoardCategory>
 	);
 }
