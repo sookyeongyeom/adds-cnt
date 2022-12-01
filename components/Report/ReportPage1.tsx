@@ -45,7 +45,6 @@ const GrayBackground = styled(Background)`
 `;
 
 const NavyBottom = styled(Background)`
-	z-index: 10;
 	top: unset;
 	bottom: 0;
 `;
