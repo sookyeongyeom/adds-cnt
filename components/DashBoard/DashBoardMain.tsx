@@ -54,4 +54,5 @@ const Tool = styled.div`
 	margin: 0 auto;
 	padding: 1rem 1.5rem;
 	border-radius: 0.6rem;
+	z-index: 15;
 `;
