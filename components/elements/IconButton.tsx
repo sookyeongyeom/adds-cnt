@@ -9,7 +9,7 @@ export default function IconButton({ children, onClick }: IconButtonProps) {
 
 const IconContainer = styled.button`
 	${Fonts.button16bold}
-	display: flex;
+	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	gap: 0.5rem;

@@ -31,3 +31,15 @@ export const CategorySection = styled.section`
 		margin-bottom: 0;
 	}
 `;
+
+export const DoNotPrint = styled.div`
+	@media print {
+		display: none;
+	}
+`;
+
+export const DoPrint = styled.div`
+	@media print {
+		display: block;
+	}
+`;

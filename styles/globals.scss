@@ -22,12 +22,15 @@ a {
 	color: $gray900;
 }
 
-@media (prefers-color-scheme: dark) {
-	html {
-		color-scheme: dark;
-	}
+@page {
+	size: A4;
+	margin: 0;
+}
+
+@media print {
+	html,
 	body {
-		color: white;
-		background: black;
+		width: 210mm;
+		height: 297mm;
 	}
 }
