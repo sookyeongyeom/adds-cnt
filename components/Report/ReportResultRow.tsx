@@ -18,7 +18,7 @@ export default function ReportResultRow({
 		<ResultRow>
 			<section>
 				<h1>
-					{title} <span>(Wisconsin Card Sorting Test, WCST)</span>
+					{title} <span>{titleEng}</span>
 				</h1>
 				<h2>{subtitle}</h2>
 			</section>
