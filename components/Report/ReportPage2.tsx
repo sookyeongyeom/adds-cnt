@@ -5,17 +5,25 @@ import { useProfilesValue } from '../../contexts/ProfilesProviders';
 import GraphTotal from '../Graph/GraphTotal';
 import { useEffect, useState } from 'react';
 import Profiles from '../../models/Profiles';
-import TestTypes from '../../constants/tests';
+import { CardSortingLabels } from '../../constants/tests';
+import { useResultsValue } from '../../contexts/ResultsProviders';
+import Results from '../../models/Results';
 
 export default function ReportPage2() {
 	const currentPatientValue = useCurrentPatientValue();
 	const profilesValue = useProfilesValue();
+	const resultsValue = useResultsValue();
 
 	const [profile, setProfile] = useState<Profiles>();
+	const [result, setResult] = useState<Results>();
 
 	useEffect(() => {
 		if (profilesValue[currentPatientValue]) setProfile(profilesValue[currentPatientValue]);
 	}, [currentPatientValue, profilesValue]);
+
+	useEffect(() => {
+		if (resultsValue[currentPatientValue]) setResult(resultsValue[currentPatientValue]);
+	}, [currentPatientValue, resultsValue]);
 
 	return (
 		<Page2Container id='page2'>
@@ -141,13 +149,12 @@ export default function ReportPage2() {
 					<div>
 						<section>
 							<GraphTotal
-								testType={TestTypes.cardSorting}
-								label1='총 시도수, 완성된 범주수'
-								label2='보속 오류'
-								label3='비보속 오류'
-								value1={44}
-								value2={45}
-								value3={47}
+								label1={`${CardSortingLabels.TTtc}`}
+								label2={`${CardSortingLabels.PEtc}`}
+								label3={`${CardSortingLabels.NEtc}`}
+								value1={result?.getCardSorting()?.getTTtc() as number}
+								value2={result?.getCardSorting()?.getPEtc() as number}
+								value3={result?.getCardSorting()?.getNEtc() as number}
 							/>
 						</section>
 						<section>

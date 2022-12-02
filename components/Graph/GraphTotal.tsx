@@ -4,7 +4,6 @@ import Colors from '../../constants/colors';
 import { GraphAxisProps } from './styled';
 
 export default function GraphTotal({
-	testType,
 	label1,
 	label2,
 	label3,
@@ -33,10 +32,12 @@ export default function GraphTotal({
 						<div>{label2}</div>
 						<div />
 					</div>
-					<div>
-						<div>{label3}</div>
-						<div />
-					</div>
+					{label3 && (
+						<div>
+							<div>{label3}</div>
+							<div />
+						</div>
+					)}
 				</section>
 			</GraphAxis>
 		</GraphContainer>

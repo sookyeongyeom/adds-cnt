@@ -1,5 +1,4 @@
 export interface GraphTotalProps {
-	testType: string;
 	label1: string;
 	label2: string;
 	label3?: string;
