@@ -2,10 +2,20 @@ import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import { useCurrentPatientValue } from '../../contexts/CurrentPatientProviders';
 import { useProfilesValue } from '../../contexts/ProfilesProviders';
+import GraphTotal from '../Graph/GraphTotal';
+import { useEffect, useState } from 'react';
+import Profiles from '../../models/Profiles';
+import TestTypes from '../../constants/tests';
 
 export default function ReportPage2() {
 	const currentPatientValue = useCurrentPatientValue();
 	const profilesValue = useProfilesValue();
+
+	const [profile, setProfile] = useState<Profiles>();
+
+	useEffect(() => {
+		if (profilesValue[currentPatientValue]) setProfile(profilesValue[currentPatientValue]);
+	}, [currentPatientValue, profilesValue]);
 
 	return (
 		<Page2Container id='page2'>
@@ -16,22 +26,13 @@ export default function ReportPage2() {
 					<tbody>
 						<tr>
 							<th>이름</th>
-							<td>
-								{profilesValue[currentPatientValue] && profilesValue[currentPatientValue].getName()}
-							</td>
+							<td>{profile && profile.getName()}</td>
 							<th>연령</th>
-							<td>
-								만{' '}
-								{profilesValue[currentPatientValue] && profilesValue[currentPatientValue].getAge()}
-							</td>
+							<td>만 {profile && profile.getAge()}</td>
 							<th>성별</th>
-							<td>
-								{profilesValue[currentPatientValue] && profilesValue[currentPatientValue].getSex()}
-							</td>
+							<td>{profile && profile.getSex()}</td>
 							<th>실시일</th>
-							<td>
-								{profilesValue[currentPatientValue] && profilesValue[currentPatientValue].getDate()}
-							</td>
+							<td>{profile && profile.getDate()}</td>
 						</tr>
 					</tbody>
 				</ProfileTable>
@@ -138,7 +139,17 @@ export default function ReportPage2() {
 						</h2>
 					</section>
 					<div>
-						<section>그래프</section>
+						<section>
+							<GraphTotal
+								testType={TestTypes.cardSorting}
+								label1='총 시도수, 완성된 범주수'
+								label2='보속 오류'
+								label3='비보속 오류'
+								value1={44}
+								value2={45}
+								value3={47}
+							/>
+						</section>
 						<section>
 							<h1>결과해석</h1>
 						</section>
@@ -308,8 +319,7 @@ const Row3 = styled(Row)`
 		width: 100%;
 
 		section:first-of-type {
-			background-color: beige;
-			width: 50%;
+			width: 55%;
 		}
 
 		section:last-of-type {
