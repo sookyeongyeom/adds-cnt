@@ -43,3 +43,48 @@ export const DoPrint = styled.div`
 		display: block;
 	}
 `;
+
+export const Row = styled.div`
+	display: flex;
+	align-items: center;
+`;
+
+export const ResultRow = styled(Row)`
+	text-align: left;
+	flex-direction: column;
+
+	> section:first-of-type {
+		background-color: ${Colors.gray100};
+		padding: 1rem;
+		margin-bottom: 1rem;
+
+		h1 {
+			font-size: 2rem;
+			font-weight: 600;
+			margin-bottom: 0.7rem;
+
+			span {
+				font-size: 1.4rem;
+				font-weight: 500;
+			}
+		}
+
+		h2 {
+			font-size: 1.4rem;
+		}
+	}
+
+	> div {
+		display: flex;
+		width: 100%;
+
+		section:first-of-type {
+			width: 55%;
+		}
+
+		section:last-of-type {
+			background-color: ${Colors.blue100};
+			flex-grow: 1;
+		}
+	}
+`;

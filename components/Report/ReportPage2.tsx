@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import { useCurrentPatientValue } from '../../contexts/CurrentPatientProviders';
 import { useProfilesValue } from '../../contexts/ProfilesProviders';
-import GraphTotal from '../Graph/GraphTotal';
 import { useEffect, useState } from 'react';
 import Profiles from '../../models/Profiles';
 import { CardSortingLabels } from '../../constants/tests';
 import { useResultsValue } from '../../contexts/ResultsProviders';
 import Results from '../../models/Results';
+import { Row } from '../../constants/styled';
+import ReportResultRow from './ReportResultRow';
 
 export default function ReportPage2() {
 	const currentPatientValue = useCurrentPatientValue();
@@ -136,32 +137,19 @@ export default function ReportPage2() {
 						</table>
 					</section>
 				</Row2>
-				<Row3>
-					<section>
-						<h1>
-							1. 위스콘신 카드분류 검사 <span>(Wisconsin Card Sorting Test, WCST)</span>
-						</h1>
-						<h2>
-							본 검사는 실행기능 중에서도 특히 추상적 문제해결력, 인지적 융통성, 즉 필요에 따라 반응
-							경향을 바꾸는 능력 (i.e. set-shifting)을 평가합니다.
-						</h2>
-					</section>
-					<div>
-						<section>
-							<GraphTotal
-								label1={`${CardSortingLabels.TTtc}`}
-								label2={`${CardSortingLabels.PEtc}`}
-								label3={`${CardSortingLabels.NEtc}`}
-								value1={result?.getCardSorting()?.getTTtc() as number}
-								value2={result?.getCardSorting()?.getPEtc() as number}
-								value3={result?.getCardSorting()?.getNEtc() as number}
-							/>
-						</section>
-						<section>
-							<h1>결과해석</h1>
-						</section>
-					</div>
-				</Row3>
+				<ReportResultRow
+					title={'1. 위스콘신 카드분류 검사'}
+					titleEng={'(Wisconsin Card Sorting Test, WCST)'}
+					subtitle={
+						'본 검사는 실행기능 중에서도 특히 추상적 문제해결력, 인지적 융통성, 즉 필요에 따라 반응 경향을 바꾸는 능력 (i.e. set-shifting)을 평가합니다.'
+					}
+					label1={`${CardSortingLabels.TTtc}`}
+					label2={`${CardSortingLabels.PEtc}`}
+					label3={`${CardSortingLabels.NEtc}`}
+					value1={result?.getCardSorting()?.getTTtc() as number}
+					value2={result?.getCardSorting()?.getPEtc() as number}
+					value3={result?.getCardSorting()?.getNEtc() as number}
+				/>
 			</ContentContainer>
 		</Page2Container>
 	);
@@ -216,11 +204,6 @@ const Contact = styled.div`
 	word-break: keep-all;
 	line-height: 1.8rem;
 	margin-bottom: 2rem;
-`;
-
-const Row = styled.div`
-	display: flex;
-	align-items: center;
 `;
 
 const Row1 = styled(Row)`
@@ -292,46 +275,6 @@ const Row2 = styled(Row)`
 
 		tr:nth-child(even) {
 			background-color: ${Colors.gray100};
-		}
-	}
-`;
-
-const Row3 = styled(Row)`
-	text-align: left;
-	flex-direction: column;
-
-	> section:first-of-type {
-		background-color: ${Colors.gray100};
-		padding: 1rem;
-		margin-bottom: 1rem;
-
-		h1 {
-			font-size: 2rem;
-			font-weight: 600;
-			margin-bottom: 0.7rem;
-
-			span {
-				font-size: 1.4rem;
-				font-weight: 500;
-			}
-		}
-
-		h2 {
-			font-size: 1.4rem;
-		}
-	}
-
-	> div {
-		display: flex;
-		width: 100%;
-
-		section:first-of-type {
-			width: 55%;
-		}
-
-		section:last-of-type {
-			background-color: ${Colors.blue100};
-			flex-grow: 1;
 		}
 	}
 `;
