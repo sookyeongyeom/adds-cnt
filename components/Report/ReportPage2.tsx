@@ -7,7 +7,7 @@ import Profiles from '../../models/Profiles';
 import { CardSortingLabels } from '../../constants/tests';
 import { useResultsValue } from '../../contexts/ResultsProviders';
 import Results from '../../models/Results';
-import { Row } from '../../constants/styled';
+import { Emp, Row, Underline } from '../../constants/styled';
 import ReportResultRow from './ReportResultRow';
 
 export default function ReportPage2() {
@@ -47,30 +47,43 @@ export default function ReportPage2() {
 				</ProfileTable>
 				<Contact>
 					안녕하십니까, 연구 참여 아동의 인지기능평가 결과를 보내드립니다. 결과와 관련하여
-					문의사항이 있으시면 연락주십시오. 감사합니다. *담당연구원: 오서진(임상심리전문가), 연락처:
-					addsyonsei@yonsei.ac.kr/ 010-2763-3149
+					문의사항이 있으시면 연락주십시오. 감사합니다. *담당연구원: 오서진(임상심리전문가), 연락처:{' '}
+					<Underline>addsyonsei@yonsei.ac.kr</Underline> / 010-2763-3149
 				</Contact>
 				<Row1>
 					<section>
 						<div>
-							실행기능(Executive function)이란, 목표를 달성하기 이해 상황에 맞게 행동과 사고를
-							조절하고 관리하는 능력으로, 두뇌의 전두엽(오른쪽 그림 참조)에서 담당하는 고차적인
-							인지능력입니다.
+							<div>·</div>
+							<div>
+								<Emp>실행기능(Executive function)이란,</Emp> 목표를 달성하기 이해 상황에 맞게 행동과
+								사고를 조절하고 관리하는 능력으로, 두뇌의 전두엽(오른쪽 그림 참조)에서 담당하는
+								고차적인 인지능력입니다.
+							</div>
 						</div>
 						<div>
-							하위 영역으로는 상황을 미리 예측하고 계획을 세우는 능력(계획력), 과제나 상황에 따라
-							대안을 생각하고 유연하게 사고하는 능력(인지적 융통성), 목표행동을 달성하기 위해
-							불필요한 자극을 무시하고 행동을 억제하는 능력(행동억제 능력), 상황의 요구에 따라
-							주의를 조절하고 변경할 수 있는 능력(주의조절력) 등이 포함됩니다.
+							<div>·</div>
+							<div>
+								<Emp>하위 영역</Emp>으로는 상황을 미리 예측하고 계획을 세우는 능력(계획력), 과제나
+								상황에 따라 대안을 생각하고 유연하게 사고하는 능력(인지적 융통성), 목표행동을
+								달성하기 위해 불필요한 자극을 무시하고 행동을 억제하는 능력(행동억제 능력), 상황의
+								요구에 따라 주의를 조절하고 변경할 수 있는 능력(주의조절력) 등이 포함됩니다.
+							</div>
 						</div>
 						<div>
-							본 연구에서는 전산화된(computerized) 평가도구인 CNT 4.0을 활용하여 실행기능을 평가하는
-							대표적인 검사 3가지를 실시하였습니다.
+							<div>·</div>
+							<div>
+								본 연구에서는 전산화된(computerized) 평가도구인 CNT 4.0을 활용하여 실행기능을
+								평가하는 대표적인 검사 3가지를 실시하였습니다.
+							</div>
 						</div>
 						<div>
-							결과 해석 시 주의 사항: 실행기능의 발달 시기는 학령기 무렵(만 6세경)부터 후기
-							청소년기(10대 후반)까지로 알려져 있습니다. 하위 영역별 발달 양상에는 개인차가 있으며,
-							현재 아동의 평가 결과가 고정되어 성인기까지 유지되는 것은 아님을 참고해주십시오.
+							<div>·</div>
+							<div>
+								<Emp>결과 해석 시 주의 사항:</Emp> 실행기능의 발달 시기는 학령기 무렵(만 6세경)부터
+								후기 청소년기(10대 후반)까지로 알려져 있습니다. 하위 영역별 발달 양상에는 개인차가
+								있으며, 현재 아동의 평가 결과가 고정되어 성인기까지 유지되는 것은 아님을
+								참고해주십시오.
+							</div>
 						</div>
 					</section>
 					<img src='/assets/page2_brain.png' />
@@ -79,14 +92,23 @@ export default function ReportPage2() {
 					<section>
 						<h1>점수대별 수준 해석하기</h1>{' '}
 						<div>
-							모든 검사 결과 그래프에서 파란색 점선은 동일 연령대의 평균 수행도(T점수=50)를
-							나타냅니다.
+							<div>✓</div>
+							<div>
+								모든 검사 결과 그래프에서{' '}
+								<Emp>파란색 점선은 동일 연령대의 평균 수행도(T점수=50)</Emp>를 나타냅니다.
+							</div>
 						</div>
 						<div>
-							그래프가 빨간색 선 미만인 경우는(T점수&lang;30), 해당 과제에서 아동의 수행이 명백하게
-							저조함을 의미합니다.
+							<div>✓</div>
+							<div>
+								그래프가 빨간색 선 미만인 경우는(T점수&lt;30), 해당 과제에서 아동의 수행이 명백하게
+								저조함을 의미합니다.
+							</div>
 						</div>
-						<div>각 점수대별 수준 해석은 오른쪽 표를 참고하십시오.</div>
+						<div>
+							<div>✓</div>
+							<div>각 점수대별 수준 해석은 오른쪽 표를 참고하십시오.</div>
+						</div>
 					</section>
 					<section>
 						<table>
@@ -179,7 +201,7 @@ const ContentContainer = styled.div`
 
 const ProfileTable = styled.table`
 	border: 0.1rem solid ${Colors.gray500};
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 
 	td,
 	th {
@@ -202,31 +224,39 @@ const Contact = styled.div`
 	font-size: 1.4rem;
 	text-align: left;
 	word-break: keep-all;
-	line-height: 1.8rem;
-	margin-bottom: 2rem;
+	line-height: 130%;
+	margin-bottom: 1rem;
 `;
 
 const Row1 = styled(Row)`
 	display: flex;
 	align-items: center;
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 
 	> section {
 		background-color: ${Colors.blue100};
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		gap: 2rem;
-		padding: 1.8rem;
+		gap: 1.5rem;
+		padding: 1.5rem;
 		text-align: left;
 		word-break: keep-all;
 
 		> div {
-			font-size: 1.5rem;
+			/* 주의사항 안내 */
+			display: flex;
+			gap: 0.5rem;
+
+			> div {
+				font-size: 1.4rem;
+				line-height: 140%;
+			}
 		}
 	}
 
 	> img {
+		/* 전두엽 사진 */
 		width: 20rem;
 		height: 25rem;
 		padding: 2.5rem;
@@ -237,36 +267,58 @@ const Row1 = styled(Row)`
 const Row2 = styled(Row)`
 	text-align: left;
 	gap: 2rem;
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 
 	section:first-of-type {
+		/* 점수대별 수준 해석하기 */
 		width: 50%;
-		border: 0.1rem dotted ${Colors.gray500};
-		padding: 1rem;
+		border: 0.1rem dashed ${Colors.gray400};
+		padding: 1rem 1.5rem;
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: 1.2rem;
 		align-self: stretch;
-		justify-content: center;
 
-		h1 {
+		> h1 {
+			/* 제목 */
 			text-align: center;
 			font-weight: 600;
+			margin-top: 1.5rem;
+			margin-bottom: 1.4rem;
+		}
+
+		> div {
+			display: flex;
+			gap: 0.5rem;
+		}
+
+		> div > div {
+			/* 내용 */
+			font-size: 1.4rem;
+			line-height: 140%;
+			word-break: keep-all;
 		}
 	}
 
 	section:last-of-type {
+		/* 수준 테이블 */
 		flex-grow: 1;
 
 		table {
 			width: 100%;
 		}
 
+		th,
+		td {
+			font-size: 1.3rem;
+		}
+
 		th {
-			padding: 1rem;
+			padding: 0.7rem;
 			text-align: center;
-			border-bottom: 0.1rem solid ${Colors.gray500};
+			border-bottom: 0.15rem solid ${Colors.gray500};
 			background-color: ${Colors.gray100};
+			font-weight: 600;
 		}
 
 		td {

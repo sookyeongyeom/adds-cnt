@@ -4,13 +4,20 @@ import { ReportTotalProps } from './props';
 import ReportPage2 from './ReportPage2';
 import ReportPage3 from './ReportPage3';
 import Colors from '../../constants/colors';
+import { useCurrentPatientValue } from '../../contexts/CurrentPatientProviders';
 
 export default function ReportTotal({ page }: ReportTotalProps) {
+	const currentPatientValue = useCurrentPatientValue();
+
 	return (
 		<TotalContainer>
-			<ReportPage1 />
-			<ReportPage2 />
-			<ReportPage3 />
+			{currentPatientValue && (
+				<>
+					<ReportPage1 />
+					<ReportPage2 />
+					<ReportPage3 />
+				</>
+			)}
 		</TotalContainer>
 	);
 }

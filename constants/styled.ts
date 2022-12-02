@@ -88,3 +88,14 @@ export const ResultRow = styled(Row)`
 		}
 	}
 `;
+
+export const Emp = styled.span`
+	font-weight: 600;
+	text-decoration: underline;
+	text-underline-position: below;
+`;
+
+export const Underline = styled.span`
+	text-decoration: underline;
+	text-underline-position: below;
+`;
