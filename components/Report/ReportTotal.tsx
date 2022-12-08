@@ -4,14 +4,15 @@ import { ReportTotalProps } from './props';
 import ReportPage2 from './ReportPage2';
 import ReportPage3 from './ReportPage3';
 import Colors from '../../constants/colors';
-import { useCurrentPatientValue } from '../../contexts/CurrentPatientProviders';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../modules';
 
 export default function ReportTotal({ page }: ReportTotalProps) {
-	const currentPatientValue = useCurrentPatientValue();
+	const focusId = useSelector(({ focusId }: RootState) => focusId);
 
 	return (
 		<TotalContainer>
-			{currentPatientValue && (
+			{focusId && (
 				<>
 					<ReportPage1 />
 					<ReportPage2 />

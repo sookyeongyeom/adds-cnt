@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useCurrentPatientValue } from '../../contexts/CurrentPatientProviders';
-import { useResultsValue } from '../../contexts/ResultsProviders';
 import Results from '../../models/Results';
 import ReportResultRow from './ReportResultRow';
 import { WordColorLabels, TrailMakingLabels } from '../../constants/tests';
 import Colors from '../../constants/colors';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../modules';
 
 export default function ReportPage3() {
-	const currentPatientValue = useCurrentPatientValue();
-	const resultsValue = useResultsValue();
+	const focusId = useSelector(({ focusId }: RootState) => focusId);
+	const results = useSelector(({ results }: RootState) => results);
 
 	const [result, setResult] = useState<Results>();
 
 	useEffect(() => {
-		if (resultsValue[currentPatientValue]) setResult(resultsValue[currentPatientValue]);
-	}, [currentPatientValue, resultsValue]);
+		if (results[focusId]) setResult(results[focusId]);
+	}, [results, focusId]);
 
 	return (
 		<Page3Container id='page3'>

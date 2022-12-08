@@ -1,30 +1,29 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
-import { useCurrentPatientValue } from '../../contexts/CurrentPatientProviders';
-import { useProfilesValue } from '../../contexts/ProfilesProviders';
 import { useEffect, useState } from 'react';
 import Profiles from '../../models/Profiles';
 import { CardSortingLabels } from '../../constants/tests';
-import { useResultsValue } from '../../contexts/ResultsProviders';
 import Results from '../../models/Results';
 import { Emp, Row, Underline } from '../../constants/styled';
 import ReportResultRow from './ReportResultRow';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../modules';
 
 export default function ReportPage2() {
-	const currentPatientValue = useCurrentPatientValue();
-	const profilesValue = useProfilesValue();
-	const resultsValue = useResultsValue();
+	const focusId = useSelector(({ focusId }: RootState) => focusId);
+	const results = useSelector(({ results }: RootState) => results);
+	const profiles = useSelector(({ profiles }: RootState) => profiles);
 
 	const [profile, setProfile] = useState<Profiles>();
 	const [result, setResult] = useState<Results>();
 
 	useEffect(() => {
-		if (profilesValue[currentPatientValue]) setProfile(profilesValue[currentPatientValue]);
-	}, [currentPatientValue, profilesValue]);
+		if (profiles[focusId]) setProfile(profiles[focusId]);
+	}, [profiles, focusId]);
 
 	useEffect(() => {
-		if (resultsValue[currentPatientValue]) setResult(resultsValue[currentPatientValue]);
-	}, [currentPatientValue, resultsValue]);
+		if (results[focusId]) setResult(results[focusId]);
+	}, [results, focusId]);
 
 	return (
 		<Page2Container id='page2'>
