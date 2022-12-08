@@ -9,18 +9,10 @@ export interface DashBoardCategoryProps extends ChildrenType {
 	title: string;
 }
 
-export interface DashBoardPageProps {
-	handleAuthClick: () => void;
-	handleSignoutClick: () => void;
-	profilePhoto: string;
-	listResultsFiles: () => void;
-}
+export interface DashBoardPageProps {}
 
 export interface DashBoardHeaderProps {
-	handleAuthClick: () => void;
-	handleSignoutClick: () => void;
 	onClickToggleUI: () => void;
-	profilePhoto: string;
 }
 
 export interface DashBoardExplorerAndInspectorProps {
@@ -31,7 +23,6 @@ export interface DashBoardExplorerAndInspectorProps {
 export interface DashBoardModalProps {
 	onCancel: () => void;
 	onConfirm: () => void;
-	onRefresh: () => void;
 }
 
 export interface DashBoardFileManagerProps {
