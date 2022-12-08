@@ -1,11 +1,11 @@
 import DashBoardCategory from './DashBoardCategory';
-import { useResultsValue } from '../../contexts/ResultsProviders';
-import { useCurrentPatientValue } from '../../contexts/CurrentPatientProviders';
 import { CategoryLabel, CategoryLine, CategorySection } from '../../constants/styled';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../modules';
 
 export default function DashBoardResult() {
-	const resultsValue = useResultsValue();
-	const currentPatientValue = useCurrentPatientValue();
+	const focusId = useSelector(({ focusId }: RootState) => focusId);
+	const results = useSelector(({ results }: RootState) => results);
 
 	return (
 		<DashBoardCategory title='Result'>
@@ -13,49 +13,41 @@ export default function DashBoardResult() {
 				<div>Card Sorting</div>
 				<CategoryLine>
 					<CategoryLabel>TTtc</CategoryLabel>
-					{resultsValue[currentPatientValue] &&
-						resultsValue[currentPatientValue].getCardSorting()?.getTTtc()}
+					{results[focusId] && results[focusId].getCardSorting()?.getTTtc()}
 				</CategoryLine>
 				<CategoryLine>
 					<CategoryLabel>PEtc</CategoryLabel>
-					{resultsValue[currentPatientValue] &&
-						resultsValue[currentPatientValue].getCardSorting()?.getPEtc()}
+					{results[focusId] && results[focusId].getCardSorting()?.getPEtc()}
 				</CategoryLine>
 				<CategoryLine>
 					<CategoryLabel>NEtc</CategoryLabel>
-					{resultsValue[currentPatientValue] &&
-						resultsValue[currentPatientValue].getCardSorting()?.getNEtc()}
+					{results[focusId] && results[focusId].getCardSorting()?.getNEtc()}
 				</CategoryLine>
 			</CategorySection>
 			<CategorySection>
 				<div>Word Color</div>
 				<CategoryLine>
 					<CategoryLabel>TC1</CategoryLabel>
-					{resultsValue[currentPatientValue] &&
-						resultsValue[currentPatientValue].getWordColor()?.getTC1()}
+					{results[focusId] && results[focusId].getWordColor()?.getTC1()}
 				</CategoryLine>
 				<CategoryLine>
 					<CategoryLabel>TC2</CategoryLabel>
-					{resultsValue[currentPatientValue] &&
-						resultsValue[currentPatientValue].getWordColor()?.getTC2()}
+					{results[focusId] && results[focusId].getWordColor()?.getTC2()}
 				</CategoryLine>
 				<CategoryLine>
 					<CategoryLabel>TC5</CategoryLabel>
-					{resultsValue[currentPatientValue] &&
-						resultsValue[currentPatientValue].getWordColor()?.getTC5()}
+					{results[focusId] && results[focusId].getWordColor()?.getTC5()}
 				</CategoryLine>
 			</CategorySection>
 			<CategorySection>
 				<div>Trail Making</div>
 				<CategoryLine>
 					<CategoryLabel>TC1</CategoryLabel>
-					{resultsValue[currentPatientValue] &&
-						resultsValue[currentPatientValue].getTrailMaking()?.getTC1()}
+					{results[focusId] && results[focusId].getTrailMaking()?.getTC1()}
 				</CategoryLine>
 				<CategoryLine>
 					<CategoryLabel>TC2</CategoryLabel>
-					{resultsValue[currentPatientValue] &&
-						resultsValue[currentPatientValue].getTrailMaking()?.getTC2()}
+					{results[focusId] && results[focusId].getTrailMaking()?.getTC2()}
 				</CategoryLine>
 			</CategorySection>
 		</DashBoardCategory>

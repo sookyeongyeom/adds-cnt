@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Sizes from '../../constants/sizes';
 import DashBoardComment from './DashBoardComment';
 import DashBoardProfile from './DashBoardProfile';
 import DashBoardResult from './DashBoardResult';
@@ -7,20 +6,20 @@ import DashBoardDrawer from './DashBoardDrawer';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import { DashBoardExplorerAndInspectorProps } from './props';
-import { useCurrentPatientValue } from '../../contexts/CurrentPatientProviders';
-import { useProfilesValue } from '../../contexts/ProfilesProviders';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../modules';
 
 export default function DashBoardInspector({ isUIOpen }: DashBoardExplorerAndInspectorProps) {
-	const currentPatientValue = useCurrentPatientValue();
-	const profilesValue = useProfilesValue();
+	const focusId = useSelector(({ focusId }: RootState) => focusId);
+	const profiles = useSelector(({ profiles }: RootState) => profiles);
 
 	return (
 		<DashBoardDrawer isLeft={false} isUIOpen={isUIOpen}>
-			{currentPatientValue ? (
+			{focusId ? (
 				<>
 					<PatientMeta>
-						{profilesValue[currentPatientValue] && profilesValue[currentPatientValue].getName()}
-						<PatiendId>{currentPatientValue}</PatiendId>
+						{profiles[focusId] && profiles[focusId].getName()}
+						<PatiendId>{focusId}</PatiendId>
 					</PatientMeta>
 					<DashBoardProfile />
 					<DashBoardResult />

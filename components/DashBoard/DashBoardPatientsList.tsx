@@ -1,19 +1,20 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
-import { useProfilesValue } from '../../contexts/ProfilesProviders';
 import { PatientProps } from './props';
-import { useCurrentPatientActions } from '../../contexts/CurrentPatientProviders';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../modules/index';
+import { selectFocusId } from '../../modules/focusId';
 
 export default function DashBoardPatientsList() {
-	const profilesValue = useProfilesValue();
+	const profiles = useSelector(({ profiles }: RootState) => profiles);
 
 	return (
 		<PatientsListContainer>
-			<PatientsCount>총 {Object.keys(profilesValue).length}명</PatientsCount>
-			{Object.keys(profilesValue).map((v, i) => (
+			<PatientsCount>총 {Object.keys(profiles).length}명</PatientsCount>
+			{Object.keys(profiles).map((v, i) => (
 				<Patient key={i} patientId={v}>
-					{v} {profilesValue[v].getName()}
+					{v} {profiles[v].getName()}
 				</Patient>
 			))}
 		</PatientsListContainer>
@@ -21,13 +22,13 @@ export default function DashBoardPatientsList() {
 }
 
 function Patient({ children, patientId }: PatientProps) {
-	const currentPatientActions = useCurrentPatientActions();
+	const dispatch = useDispatch();
 
-	const onClick = (patientId: string) => {
-		currentPatientActions.updateCurrentPatient(patientId);
+	const onfocus = (patientId: string) => {
+		dispatch(selectFocusId(patientId));
 	};
 
-	return <PatientContainer onClick={() => onClick(patientId)}>{children}</PatientContainer>;
+	return <PatientContainer onClick={() => onfocus(patientId)}>{children}</PatientContainer>;
 }
 
 const PatientsListContainer = styled.div``;

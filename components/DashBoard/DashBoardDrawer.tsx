@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import Sizes from '../../constants/sizes';
-import { DrawerProps, DrawerTriggerAreaProps } from './styled';
+import { DrawerProps } from './styled';
 import { DashBoardDrawerProps } from './props';
 import Colors from '../../constants/colors';
 
@@ -31,28 +30,3 @@ const DrawerContainer = styled.div<DrawerProps>`
 	background-color: ${Colors.blue100};
 	z-index: 10;
 `;
-
-// const CloseTriggerArea = styled.div<DrawerTriggerAreaProps>`
-// 	width: 2rem;
-// 	height: 100%;
-// 	position: absolute;
-// 	right: ${(props) => props.isLeft && '0'};
-// 	left: ${(props) => !props.isLeft && '0'};
-// 	top: 0;
-// 	cursor: pointer;
-
-// 	&:hover {
-// 		background-color: #4343ff3a;
-// 	}
-// `;
-
-// const OpenTriggerArea = styled.div<DrawerTriggerAreaProps>`
-// 	background-color: pink;
-// 	width: 2rem;
-// 	height: 2rem;
-// 	position: absolute;
-// 	right: ${(props) => props.isLeft && '-2rem'};
-// 	left: ${(props) => !props.isLeft && '-2rem'};
-// 	top: 0;
-// 	cursor: pointer;
-// `;

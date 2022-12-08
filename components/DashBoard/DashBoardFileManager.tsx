@@ -4,10 +4,11 @@ import Button from '../elements/Button';
 import { ButtonTypes } from '../../constants/buttons';
 import Fonts from '../../constants/fonts';
 import { DashBoardFileManagerProps, FileStatusProps } from './props';
-import { useResultsValue } from '../../contexts/ResultsProviders';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../modules';
 
 export default function DashBoardFileManager({ onClickOpenSelect }: DashBoardFileManagerProps) {
-	const resultsValue = useResultsValue();
+	const results = useSelector(({ results }: RootState) => results);
 
 	return (
 		<FileManagerContainer>
@@ -23,7 +24,7 @@ export default function DashBoardFileManager({ onClickOpenSelect }: DashBoardFil
 					파일선택
 				</Button>
 			</FileAction>
-			<FileStatus title={'검사결과'}>{Object.keys(resultsValue).length}개의 데이터</FileStatus>
+			<FileStatus title={'검사결과'}>{Object.keys(results).length}개의 데이터</FileStatus>
 			<FileStatus title={'신상정보'}>신상정보</FileStatus>
 			<FileStatus title={'결과해석'}>결과해석</FileStatus>
 		</FileManagerContainer>

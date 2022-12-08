@@ -5,16 +5,20 @@ import Button from '../elements/Button';
 import { ButtonTypes } from '../../constants/buttons';
 import Fonts from '../../constants/fonts';
 import { DashBoardHeaderProps } from './props';
-import { useAuthTokenValue } from '../../contexts/AuthTokenProviders';
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../modules/index';
+import { logout, login } from '../../modules/google';
 
-export default function DashBoardHeader({
-	handleAuthClick,
-	handleSignoutClick,
-	onClickToggleUI,
-	profilePhoto,
-}: DashBoardHeaderProps) {
-	const authTokenValue = useAuthTokenValue();
+export default function DashBoardHeader({ onClickToggleUI }: DashBoardHeaderProps) {
+	const { gapi, tokenClient, authToken, profilePicture } = useSelector(
+		({ google }: RootState) => google,
+	);
+
+	const dispatch = useDispatch();
+	const onLogout = () => dispatch(logout());
+	const onLogin: any = (authToken: any) => dispatch(login(authToken));
+
 	const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
 	const onClickDropDownOpen = () => {
@@ -31,6 +35,23 @@ export default function DashBoardHeader({
 		setIsDropDownOpen(false);
 	};
 
+	function handleAuthClick() {
+		if (tokenClient !== null) {
+			tokenClient.callback = async (resp: any) => {
+				if (resp.error !== undefined) throw resp;
+				const authToken = gapi.client.getToken().access_token;
+				onLogin(authToken);
+			};
+
+			if (gapi.client.getToken() === null) tokenClient.requestAccessToken({ prompt: 'consent' });
+			else tokenClient.requestAccessToken({ prompt: '' });
+		}
+	}
+
+	function handleSignoutClick() {
+		if (authToken) onLogout();
+	}
+
 	return (
 		<HeaderContainer>
 			<Logo>
@@ -39,15 +60,15 @@ export default function DashBoardHeader({
 			<Button onClick={onClickToggleUI} buttonType={ButtonTypes.medium}>
 				UI
 			</Button>
-			{!authTokenValue && (
+			{!authToken && (
 				<Button onClick={handleAuthClick} buttonType={ButtonTypes.medium}>
 					LOGIN
 				</Button>
 			)}
-			{authTokenValue && (
+			{authToken && (
 				<>
 					<Photo onClick={onClickDropDownOpen} onBlur={onBlurDropDown}>
-						<img src={profilePhoto} />
+						<img src={profilePicture} />
 						{isDropDownOpen && <DropDown onClick={onClickLogout}>LOGOUT</DropDown>}
 					</Photo>
 				</>

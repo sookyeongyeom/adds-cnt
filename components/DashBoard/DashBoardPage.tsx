@@ -4,17 +4,11 @@ import DashBoardHeader from './DashBoardHeader';
 import DashBoardInspector from './DashBoardInspector';
 import DashBoardMain from './DashBoardMain';
 import Colors from '../../constants/colors';
-import { DashBoardPageProps } from './props';
 import { useState } from 'react';
 import DashBoardSelectModal from './DashBoardSelectModal';
 import { DoNotPrint } from '../../constants/styled';
 
-export default function DashBoardPage({
-	handleAuthClick,
-	handleSignoutClick,
-	profilePhoto,
-	listResultsFiles,
-}: DashBoardPageProps) {
+export default function DashBoardPage() {
 	const [isUIOpen, SetIsUIOpen] = useState(true);
 	const [isOpenSelectModal, setIsOpenSelectModal] = useState(false);
 
@@ -28,23 +22,14 @@ export default function DashBoardPage({
 	return (
 		<PageContainer>
 			<DoNotPrint>
-				<DashBoardHeader
-					handleAuthClick={handleAuthClick}
-					handleSignoutClick={handleSignoutClick}
-					onClickToggleUI={onClickToggleUI}
-					profilePhoto={profilePhoto}
-				/>
+				<DashBoardHeader onClickToggleUI={onClickToggleUI} />
 				<DashBoardExplorer isUIOpen={isUIOpen} onClickOpenSelect={onClickOpenSelect} />
 			</DoNotPrint>
 			<DashBoardMain />
 			<DoNotPrint>
 				<DashBoardInspector isUIOpen={isUIOpen} />
 				{isOpenSelectModal && (
-					<DashBoardSelectModal
-						onCancel={onClickCloseSelect}
-						onConfirm={console.log}
-						onRefresh={listResultsFiles}
-					/>
+					<DashBoardSelectModal onCancel={onClickCloseSelect} onConfirm={console.log} />
 				)}
 			</DoNotPrint>
 		</PageContainer>
