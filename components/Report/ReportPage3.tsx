@@ -18,10 +18,10 @@ export default function ReportPage3() {
 	}, [results, focusId]);
 
 	return (
-		<Page3Container id='page3'>
-			<NavyTop src='/assets/page2_남색상단.png' />
-			<GrayBottom src='/assets/page2_회색하단.png' />
-			<ContentContainer>
+		<S.Page3Container id='page3'>
+			<S.NavyTop src='/assets/page2_남색상단.png' />
+			<S.GrayBottom src='/assets/page2_회색하단.png' />
+			<S.ContentContainer>
 				<ReportResultRow
 					title={'2. 스트룹 색상-단어 검사'}
 					titleEng={'(Stroop Color-Word Test)'}
@@ -58,45 +58,47 @@ export default function ReportPage3() {
 						권합니다. (본 연구에서도 1년 후 재검사를 시행할 예정입니다.)
 					</div>
 				</section>
-			</ContentContainer>
-		</Page3Container>
+			</S.ContentContainer>
+		</S.Page3Container>
 	);
 }
 
-const Page3Container = styled.div``;
+namespace S {
+	export const Page3Container = styled.div``;
 
-const Background = styled.img`
-	width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 3;
-`;
+	export const Background = styled.img`
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 3;
+	`;
 
-const NavyTop = styled(Background)``;
+	export const NavyTop = styled(Background)``;
 
-const GrayBottom = styled(Background)`
-	top: unset;
-	bottom: -0.2rem;
-`;
+	export const GrayBottom = styled(Background)`
+		top: unset;
+		bottom: -0.2rem;
+	`;
 
-const ContentContainer = styled.div`
-	height: 100%;
-	padding: 7rem 3rem 5rem 3rem;
+	export const ContentContainer = styled.div`
+		height: 100%;
+		padding: 7rem 3rem 5rem 3rem;
 
-	> section {
-		text-align: left;
+		> section {
+			text-align: left;
 
-		> h1 {
-			font-size: 2rem;
-			font-weight: 600;
-			margin-bottom: 1rem;
+			> h1 {
+				font-size: 2rem;
+				font-weight: 600;
+				margin-bottom: 1rem;
+			}
+
+			> div {
+				background-color: ${Colors.blue100};
+				padding: 1rem;
+				line-height: 150%;
+			}
 		}
-
-		> div {
-			background-color: ${Colors.blue100};
-			padding: 1rem;
-			line-height: 150%;
-		}
-	}
-`;
+	`;
+}

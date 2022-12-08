@@ -1,4 +1,4 @@
-import { ResultRow } from '../../constants/styled';
+import { SC } from '../../constants/styled';
 import GraphTotal from '../Graph/GraphTotal';
 import { ReportResultRowProps } from './props';
 
@@ -15,7 +15,7 @@ export default function ReportResultRow({
 	value3,
 }: ReportResultRowProps) {
 	return (
-		<ResultRow>
+		<SC.ResultRow>
 			<section>
 				<h1>
 					{title} <span>{titleEng}</span>
@@ -37,6 +37,6 @@ export default function ReportResultRow({
 					<h1>결과해석</h1>
 				</section>
 			</div>
-		</ResultRow>
+		</SC.ResultRow>
 	);
 }

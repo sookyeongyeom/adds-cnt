@@ -1,5 +1,5 @@
 import DashBoardCategory from './DashBoardCategory';
-import { CategoryLabel, CategoryLine } from '../../constants/styled';
+import { SC } from '../../constants/styled';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
 
@@ -9,18 +9,18 @@ export default function DashBoardProfile() {
 
 	return (
 		<DashBoardCategory title='Profile'>
-			<CategoryLine>
-				<CategoryLabel>이름</CategoryLabel>
+			<SC.CategoryLine>
+				<SC.CategoryLabel>이름</SC.CategoryLabel>
 				{profiles[focusId] && profiles[focusId].getName()}
-			</CategoryLine>
-			<CategoryLine>
-				<CategoryLabel>연령</CategoryLabel>
+			</SC.CategoryLine>
+			<SC.CategoryLine>
+				<SC.CategoryLabel>연령</SC.CategoryLabel>
 				{profiles[focusId] && profiles[focusId].getAge()}
-			</CategoryLine>
-			<CategoryLine>
-				<CategoryLabel>성별</CategoryLabel>
+			</SC.CategoryLine>
+			<SC.CategoryLine>
+				<SC.CategoryLabel>성별</SC.CategoryLabel>
 				{profiles[focusId] && profiles[focusId].getSex()}
-			</CategoryLine>
+			</SC.CategoryLine>
 		</DashBoardCategory>
 	);
 }

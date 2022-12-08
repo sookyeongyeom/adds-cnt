@@ -53,10 +53,10 @@ export default function DashBoardHeader({ onClickToggleUI }: DashBoardHeaderProp
 	}
 
 	return (
-		<HeaderContainer>
-			<Logo>
+		<S.HeaderContainer>
+			<S.Logo>
 				CNT<span>powered by playidea</span>
-			</Logo>
+			</S.Logo>
 			<Button onClick={onClickToggleUI} buttonType={ButtonTypes.medium}>
 				UI
 			</Button>
@@ -67,82 +67,84 @@ export default function DashBoardHeader({ onClickToggleUI }: DashBoardHeaderProp
 			)}
 			{authToken && (
 				<>
-					<Photo onClick={onClickDropDownOpen} onBlur={onBlurDropDown}>
+					<S.Photo onClick={onClickDropDownOpen} onBlur={onBlurDropDown}>
 						<img src={profilePicture} />
-						{isDropDownOpen && <DropDown onClick={onClickLogout}>LOGOUT</DropDown>}
-					</Photo>
+						{isDropDownOpen && <S.DropDown onClick={onClickLogout}>LOGOUT</S.DropDown>}
+					</S.Photo>
 				</>
 			)}
-		</HeaderContainer>
+		</S.HeaderContainer>
 	);
 }
 
-const HeaderContainer = styled.div`
-	width: 100%;
-	height: ${Sizes.headerHeight};
-	position: fixed;
-	top: 0;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	align-items: center;
-	padding: 0 3rem;
-	border-bottom: 0.1rem solid ${Colors.gray300};
-	background-color: ${Colors.white};
-	z-index: 20;
+namespace S {
+	export const HeaderContainer = styled.div`
+		width: 100%;
+		height: ${Sizes.headerHeight};
+		position: fixed;
+		top: 0;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		align-items: center;
+		padding: 0 3rem;
+		border-bottom: 0.1rem solid ${Colors.gray300};
+		background-color: ${Colors.white};
+		z-index: 20;
 
-	button {
-		width: fit-content;
-	}
+		button {
+			width: fit-content;
+		}
 
-	button:first-of-type {
-		margin: 0 auto;
-	}
+		button:first-of-type {
+			margin: 0 auto;
+		}
 
-	button:nth-of-type(2) {
+		button:nth-of-type(2) {
+			margin-left: auto;
+		}
+	`;
+
+	export const Logo = styled.div`
+		${Fonts.heading24bold}
+		color: ${Colors.blue900};
+
+		span {
+			${Fonts.body14regular}
+			margin-left: 0.5rem;
+			color: ${Colors.blue500};
+		}
+	`;
+
+	export const Photo = styled.button`
+		display: block;
+		width: 4rem;
+		height: 4rem;
+		border-radius: 50%;
+		overflow: hidden;
+		display: flex;
 		margin-left: auto;
-	}
-`;
+		cursor: pointer;
+	`;
 
-const Logo = styled.div`
-	${Fonts.heading24bold}
-	color: ${Colors.blue900};
+	export const DropDown = styled.div`
+		${Fonts.button16bold}
+		background-color: ${Colors.red500};
+		color: ${Colors.white};
+		border-radius: 0.6rem;
+		box-shadow: 6px 7px 16px rgba(106, 106, 106, 0.3);
+		position: absolute;
+		right: 2rem;
+		top: 6.5rem;
+		padding: 1.3rem 1.8rem;
+		text-align: center;
+		cursor: pointer;
 
-	span {
-		${Fonts.body14regular}
-		margin-left: 0.5rem;
-		color: ${Colors.blue500};
-	}
-`;
+		&:hover {
+			background-color: ${Colors.red700};
+		}
 
-const Photo = styled.button`
-	display: block;
-	width: 4rem;
-	height: 4rem;
-	border-radius: 50%;
-	overflow: hidden;
-	display: flex;
-	margin-left: auto;
-	cursor: pointer;
-`;
-
-const DropDown = styled.div`
-	${Fonts.button16bold}
-	background-color: ${Colors.red500};
-	color: ${Colors.white};
-	border-radius: 0.6rem;
-	box-shadow: 6px 7px 16px rgba(106, 106, 106, 0.3);
-	position: absolute;
-	right: 2rem;
-	top: 6.5rem;
-	padding: 1.3rem 1.8rem;
-	text-align: center;
-	cursor: pointer;
-
-	&:hover {
-		background-color: ${Colors.red700};
-	}
-
-	&:active {
-		background-color: ${Colors.red900};
-	}
-`;
+		&:active {
+			background-color: ${Colors.red900};
+		}
+	`;
+}

@@ -1,5 +1,5 @@
 import DashBoardCategory from './DashBoardCategory';
-import { CategoryLabel, CategoryLine, CategorySection } from '../../constants/styled';
+import { SC } from '../../constants/styled';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
 
@@ -9,47 +9,47 @@ export default function DashBoardResult() {
 
 	return (
 		<DashBoardCategory title='Result'>
-			<CategorySection>
+			<SC.CategorySection>
 				<div>Card Sorting</div>
-				<CategoryLine>
-					<CategoryLabel>TTtc</CategoryLabel>
+				<SC.CategoryLine>
+					<SC.CategoryLabel>TTtc</SC.CategoryLabel>
 					{results[focusId] && results[focusId].getCardSorting()?.getTTtc()}
-				</CategoryLine>
-				<CategoryLine>
-					<CategoryLabel>PEtc</CategoryLabel>
+				</SC.CategoryLine>
+				<SC.CategoryLine>
+					<SC.CategoryLabel>PEtc</SC.CategoryLabel>
 					{results[focusId] && results[focusId].getCardSorting()?.getPEtc()}
-				</CategoryLine>
-				<CategoryLine>
-					<CategoryLabel>NEtc</CategoryLabel>
+				</SC.CategoryLine>
+				<SC.CategoryLine>
+					<SC.CategoryLabel>NEtc</SC.CategoryLabel>
 					{results[focusId] && results[focusId].getCardSorting()?.getNEtc()}
-				</CategoryLine>
-			</CategorySection>
-			<CategorySection>
+				</SC.CategoryLine>
+			</SC.CategorySection>
+			<SC.CategorySection>
 				<div>Word Color</div>
-				<CategoryLine>
-					<CategoryLabel>TC1</CategoryLabel>
+				<SC.CategoryLine>
+					<SC.CategoryLabel>TC1</SC.CategoryLabel>
 					{results[focusId] && results[focusId].getWordColor()?.getTC1()}
-				</CategoryLine>
-				<CategoryLine>
-					<CategoryLabel>TC2</CategoryLabel>
+				</SC.CategoryLine>
+				<SC.CategoryLine>
+					<SC.CategoryLabel>TC2</SC.CategoryLabel>
 					{results[focusId] && results[focusId].getWordColor()?.getTC2()}
-				</CategoryLine>
-				<CategoryLine>
-					<CategoryLabel>TC5</CategoryLabel>
+				</SC.CategoryLine>
+				<SC.CategoryLine>
+					<SC.CategoryLabel>TC5</SC.CategoryLabel>
 					{results[focusId] && results[focusId].getWordColor()?.getTC5()}
-				</CategoryLine>
-			</CategorySection>
-			<CategorySection>
+				</SC.CategoryLine>
+			</SC.CategorySection>
+			<SC.CategorySection>
 				<div>Trail Making</div>
-				<CategoryLine>
-					<CategoryLabel>TC1</CategoryLabel>
+				<SC.CategoryLine>
+					<SC.CategoryLabel>TC1</SC.CategoryLabel>
 					{results[focusId] && results[focusId].getTrailMaking()?.getTC1()}
-				</CategoryLine>
-				<CategoryLine>
-					<CategoryLabel>TC2</CategoryLabel>
+				</SC.CategoryLine>
+				<SC.CategoryLine>
+					<SC.CategoryLabel>TC2</SC.CategoryLabel>
 					{results[focusId] && results[focusId].getTrailMaking()?.getTC2()}
-				</CategoryLine>
-			</CategorySection>
+				</SC.CategoryLine>
+			</SC.CategorySection>
 		</DashBoardCategory>
 	);
 }

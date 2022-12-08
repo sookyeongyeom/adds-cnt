@@ -6,7 +6,7 @@ import DashBoardMain from './DashBoardMain';
 import Colors from '../../constants/colors';
 import { useState } from 'react';
 import DashBoardSelectModal from './DashBoardSelectModal';
-import { DoNotPrint } from '../../constants/styled';
+import { SC } from '../../constants/styled';
 
 export default function DashBoardPage() {
 	const [isUIOpen, SetIsUIOpen] = useState(true);
@@ -20,25 +20,27 @@ export default function DashBoardPage() {
 	const onClickCloseSelect = () => setIsOpenSelectModal(false);
 
 	return (
-		<PageContainer>
-			<DoNotPrint>
+		<S.PageContainer>
+			<SC.DoNotPrint>
 				<DashBoardHeader onClickToggleUI={onClickToggleUI} />
 				<DashBoardExplorer isUIOpen={isUIOpen} onClickOpenSelect={onClickOpenSelect} />
-			</DoNotPrint>
+			</SC.DoNotPrint>
 			<DashBoardMain />
-			<DoNotPrint>
+			<SC.DoNotPrint>
 				<DashBoardInspector isUIOpen={isUIOpen} />
 				{isOpenSelectModal && (
 					<DashBoardSelectModal onCancel={onClickCloseSelect} onConfirm={console.log} />
 				)}
-			</DoNotPrint>
-		</PageContainer>
+			</SC.DoNotPrint>
+		</S.PageContainer>
 	);
 }
 
-const PageContainer = styled.div`
-	width: 100vw;
-	min-height: 100vh;
-	position: relative;
-	background-color: ${Colors.gray300};
-`;
+namespace S {
+	export const PageContainer = styled.div`
+		width: 100vw;
+		min-height: 100vh;
+		position: relative;
+		background-color: ${Colors.gray300};
+	`;
+}

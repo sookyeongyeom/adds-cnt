@@ -17,10 +17,10 @@ export default function DashBoardInspector({ isUIOpen }: DashBoardExplorerAndIns
 		<DashBoardDrawer isLeft={false} isUIOpen={isUIOpen}>
 			{focusId ? (
 				<>
-					<PatientMeta>
+					<S.PatientMeta>
 						{profiles[focusId] && profiles[focusId].getName()}
-						<PatiendId>{focusId}</PatiendId>
-					</PatientMeta>
+						<S.PatiendId>{focusId}</S.PatiendId>
+					</S.PatientMeta>
 					<DashBoardProfile />
 					<DashBoardResult />
 					<DashBoardComment />
@@ -32,15 +32,17 @@ export default function DashBoardInspector({ isUIOpen }: DashBoardExplorerAndIns
 	);
 }
 
-const PatientMeta = styled.div`
-	${Fonts.heading24bold}
-	padding: 2rem;
-	border-bottom: 0.1rem solid ${Colors.gray300};
-	display: flex;
-	gap: 1rem;
-`;
+namespace S {
+	export const PatientMeta = styled.div`
+		${Fonts.heading24bold}
+		padding: 2rem;
+		border-bottom: 0.1rem solid ${Colors.gray300};
+		display: flex;
+		gap: 1rem;
+	`;
 
-const PatiendId = styled.div`
-	${Fonts.subtitle14medium}
-	align-self: flex-end;
-`;
+	export const PatiendId = styled.div`
+		${Fonts.subtitle14medium}
+		align-self: flex-end;
+	`;
+}

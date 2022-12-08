@@ -11,7 +11,7 @@ export default function ReportTotal({ page }: ReportTotalProps) {
 	const focusId = useSelector(({ focusId }: RootState) => focusId);
 
 	return (
-		<TotalContainer>
+		<S.TotalContainer>
 			{focusId && (
 				<>
 					<ReportPage1 />
@@ -19,33 +19,35 @@ export default function ReportTotal({ page }: ReportTotalProps) {
 					<ReportPage3 />
 				</>
 			)}
-		</TotalContainer>
+		</S.TotalContainer>
 	);
 }
 
-const TotalContainer = styled.div`
-	margin: 0 auto;
-
-	> div {
-		width: 210mm;
-		height: 297mm;
+namespace S {
+	export const TotalContainer = styled.div`
 		margin: 0 auto;
-		margin-bottom: 3rem;
-		position: relative;
-		overflow: hidden;
-		background-color: ${Colors.white};
 
-		@media print {
-			margin: 0;
-			box-shadow: none;
-			/* 프린트 시 페이지 분리 */
-			page-break-after: always;
-			/* 프린트 시 백그라운드 색상 적용 */
-			-webkit-print-color-adjust: exact;
+		> div {
+			width: 210mm;
+			height: 297mm;
+			margin: 0 auto;
+			margin-bottom: 3rem;
+			position: relative;
+			overflow: hidden;
+			background-color: ${Colors.white};
+
+			@media print {
+				margin: 0;
+				box-shadow: none;
+				/* 프린트 시 페이지 분리 */
+				page-break-after: always;
+				/* 프린트 시 백그라운드 색상 적용 */
+				-webkit-print-color-adjust: exact;
+			}
 		}
-	}
 
-	div:last-of-type {
-		margin-bottom: 0;
-	}
-`;
+		div:last-of-type {
+			margin-bottom: 0;
+		}
+	`;
+}

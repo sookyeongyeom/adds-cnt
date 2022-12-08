@@ -1,21 +1,21 @@
-import { CategorySection } from '../../constants/styled';
+import { SC } from '../../constants/styled';
 import DashBoardCategory from './DashBoardCategory';
 
 export default function DashBoardComment() {
 	return (
 		<DashBoardCategory title='Result'>
-			<CategorySection>
+			<SC.CategorySection>
 				<div>Card Sorting</div>
-			</CategorySection>
-			<CategorySection>
+			</SC.CategorySection>
+			<SC.CategorySection>
 				<div>Word Color</div>
-			</CategorySection>
-			<CategorySection>
+			</SC.CategorySection>
+			<SC.CategorySection>
 				<div>Trail Making</div>
-			</CategorySection>
-			<CategorySection>
+			</SC.CategorySection>
+			<SC.CategorySection>
 				<div>전체 요약</div>
-			</CategorySection>
+			</SC.CategorySection>
 		</DashBoardCategory>
 	);
 }

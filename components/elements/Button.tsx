@@ -6,26 +6,28 @@ import { ButtonContainerProps } from './styled';
 
 export default function Button({ children, onClick, buttonType, isHidden }: ButtonProps) {
 	return (
-		<ButtonContainer onClick={onClick} buttonType={buttonType} isHidden={isHidden}>
+		<S.ButtonContainer onClick={onClick} buttonType={buttonType} isHidden={isHidden}>
 			{children}
-		</ButtonContainer>
+		</S.ButtonContainer>
 	);
 }
 
-const ButtonContainer = styled.button<ButtonContainerProps>`
-	${(props) => props.buttonType === ButtonTypes.medium && ButtonStyles.medium}
-	${(props) => props.buttonType === ButtonTypes.small && ButtonStyles.small}
+namespace S {
+	export const ButtonContainer = styled.button<ButtonContainerProps>`
+		${(props) => props.buttonType === ButtonTypes.medium && ButtonStyles.medium}
+		${(props) => props.buttonType === ButtonTypes.small && ButtonStyles.small}
 	background-color: ${Colors.blue500};
-	color: ${Colors.white};
-	border-radius: 0.6rem;
-	cursor: pointer;
-	visibility: ${(props) => props.isHidden && 'hidden'};
+		color: ${Colors.white};
+		border-radius: 0.6rem;
+		cursor: pointer;
+		visibility: ${(props) => props.isHidden && 'hidden'};
 
-	&:hover {
-		background-color: ${Colors.blue700};
-	}
+		&:hover {
+			background-color: ${Colors.blue700};
+		}
 
-	&:active {
-		background-color: ${Colors.blue900};
-	}
-`;
+		&:active {
+			background-color: ${Colors.blue900};
+		}
+	`;
+}
