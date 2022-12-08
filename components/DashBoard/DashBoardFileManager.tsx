@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
-import Button from '../elements/Button';
+import Button from '../Elements/Button';
 import { ButtonTypes } from '../../constants/buttons';
 import Fonts from '../../constants/fonts';
 import { DashBoardFileManagerProps, FileStatusProps } from './props';

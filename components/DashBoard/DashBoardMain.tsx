@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Sizes from '../../constants/sizes';
 import ReportTotal from '../Report/ReportTotal';
 import { useState } from 'react';
-import IconButton from '../elements/IconButton';
+import IconButton from '../Elements/IconButton';
 import { SC } from '../../constants/styled';
 
 export default function DashBoardMain() {

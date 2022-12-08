@@ -1,11 +1,11 @@
 import { DashBoardModalProps } from './props';
-import Modal from '../elements/Modal';
+import Modal from '../Elements/Modal';
 import styled from 'styled-components';
 import Fonts from '../../constants/fonts';
 import Colors from '../../constants/colors';
 import { SelectSectionProps } from './styled';
 import { svgRefresh } from '../../constants/svgs';
-import IconButton from '../elements/IconButton';
+import IconButton from '../Elements/IconButton';
 import getResultFiles from '../../utils/getResultFiles';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules/index';
