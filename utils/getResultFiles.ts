@@ -31,7 +31,7 @@ export default async function getResultFiles(gapi: any, authToken: string) {
 		(str: any, file: any) => `${str}${file.name} (${file.id})\n`,
 		'--- Files ---\n',
 	);
-	console.log(output);
+	// console.log(output);
 
 	const resultsTemp: ResultsValueType = {};
 	const profilesTemp: ProfilesValueType = {};

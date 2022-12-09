@@ -47,10 +47,6 @@ export default function DashBoardSelectModal({ onCancel, onConfirm }: DashBoardM
 		setFileList([]);
 	};
 
-	useEffect(() => {
-		console.log(openDropDown);
-	}, [openDropDown]);
-
 	return (
 		<Modal onCancel={onCancel} onConfirm={onConfirm}>
 			<S.SelectContainer>

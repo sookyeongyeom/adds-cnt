@@ -27,7 +27,7 @@ export default async function getFiles(gapi: any, authToken: string, folderId: s
 		(str: any, file: any) => `${str}${file.name} (${file.id})\n`,
 		'--- Files ---\n',
 	);
-	console.log(output);
+	// console.log(output);
 
 	return files.map((file: any) => [file.id, file.name]);
 }
