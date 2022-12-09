@@ -14,10 +14,7 @@ export default function Modal({ children, onCancel, onConfirm }: ModalProps) {
 				{children}
 				<S.ButtonWrapper>
 					<Button onClick={onCancel} buttonType={ButtonTypes.medium}>
-						취소하기
-					</Button>
-					<Button onClick={onConfirm} buttonType={ButtonTypes.medium}>
-						저장하기
+						선택 완료
 					</Button>
 				</S.ButtonWrapper>
 			</S.ModalContainer>
