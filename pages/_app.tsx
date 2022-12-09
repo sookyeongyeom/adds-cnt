@@ -1,7 +1,7 @@
 import '../styles/reset.scss';
 import '../styles/globals.scss';
 import type { AppProps } from 'next/app';
-import { applyMiddleware, legacy_createStore as createStore } from 'redux';
+import { applyMiddleware, compose, legacy_createStore as createStore } from 'redux';
 import rootReducer from '../modules/index';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
@@ -11,10 +11,13 @@ import { rootSaga } from '../modules/index';
 
 const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();
-export const store = createStore(
-	rootReducer,
-	composeWithDevTools(applyMiddleware(logger, sagaMiddleware)),
-);
+
+const enhancer =
+	process.env.NODE_ENV === 'production'
+		? composeWithDevTools(applyMiddleware(sagaMiddleware))
+		: composeWithDevTools(applyMiddleware(logger, sagaMiddleware));
+
+export const store = createStore(rootReducer, enhancer);
 sagaMiddleware.run(rootSaga);
 
 export default function App({ Component, pageProps }: AppProps) {
