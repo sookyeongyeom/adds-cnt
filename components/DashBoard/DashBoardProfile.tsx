@@ -15,11 +15,19 @@ export default function DashBoardProfile() {
 			</SC.CategoryLine>
 			<SC.CategoryLine>
 				<SC.CategoryLabel>연령</SC.CategoryLabel>
-				{profiles[focusId] && profiles[focusId].getAge()}
+				{profiles[focusId] && `만 ${profiles[focusId].getAge()}세`}
 			</SC.CategoryLine>
 			<SC.CategoryLine>
 				<SC.CategoryLabel>성별</SC.CategoryLabel>
 				{profiles[focusId] && profiles[focusId].getSex()}
+			</SC.CategoryLine>
+			<SC.CategoryLine>
+				<SC.CategoryLabel>학교</SC.CategoryLabel>
+				{profiles[focusId] && profiles[focusId].getSchool()}
+			</SC.CategoryLine>
+			<SC.CategoryLine>
+				<SC.CategoryLabel>실시일</SC.CategoryLabel>
+				{profiles[focusId] && profiles[focusId].getDate()}
 			</SC.CategoryLine>
 		</DashBoardCategory>
 	);

@@ -43,7 +43,7 @@ export default function ReportPage2() {
 							<th>이름</th>
 							<td>{profile && profile.getName()}</td>
 							<th>연령</th>
-							<td>만 {profile && profile.getAge()}</td>
+							<td>만 {profile && profile.getAge()}세</td>
 							<th>성별</th>
 							<td>{profile && profile.getSex()}</td>
 							<th>실시일</th>
@@ -232,7 +232,7 @@ namespace S {
 		font-size: 1.4rem;
 		text-align: left;
 		word-break: keep-all;
-		line-height: 130%;
+		line-height: 135%;
 		margin-bottom: 1rem;
 	`;
 
@@ -242,7 +242,7 @@ namespace S {
 		margin-bottom: 1rem;
 
 		> section {
-			background-color: ${Colors.blue100};
+			background-color: ${Colors.blue200};
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -275,7 +275,7 @@ namespace S {
 	export const Row2 = styled(SC.Row)`
 		text-align: left;
 		gap: 2rem;
-		margin-bottom: 1rem;
+		margin-bottom: 1.4rem;
 
 		section:first-of-type {
 			/* 점수대별 수준 해석하기 */

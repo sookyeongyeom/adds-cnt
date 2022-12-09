@@ -57,7 +57,7 @@ export default function ReportPage3() {
 				/>
 				<section>
 					<h1>전체 요약</h1>
-					<div>{comment?.getTotalComment()}</div>
+					<pre>{comment?.getTotalComment()}</pre>
 				</section>
 			</S.ContentContainer>
 		</S.Page3Container>
@@ -88,17 +88,26 @@ namespace S {
 
 		> section {
 			text-align: left;
+			display: flex;
+			flex-direction: column;
+			margin-top: 1.5rem;
+			height: 25.5rem;
+			overflow: hidden;
 
 			> h1 {
 				font-size: 2rem;
 				font-weight: 600;
-				margin-bottom: 1rem;
+				margin-bottom: 1.1rem;
+				flex-shrink: 0;
 			}
 
-			> div {
-				background-color: ${Colors.blue100};
-				padding: 1rem;
+			> pre {
+				background-color: ${Colors.blue200};
+				padding: 1.2rem;
 				line-height: 150%;
+				flex-grow: 1;
+				white-space: pre-wrap;
+				word-break: break-all;
 			}
 		}
 	`;
