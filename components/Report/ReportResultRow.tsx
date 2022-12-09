@@ -35,6 +35,7 @@ export default function ReportResultRow({
 				</section>
 				<section>
 					<h1>결과해석</h1>
+					<p>{comment}</p>
 				</section>
 			</div>
 		</SC.ResultRow>

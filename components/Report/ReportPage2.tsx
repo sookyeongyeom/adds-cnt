@@ -8,14 +8,17 @@ import { SC } from '../../constants/styled';
 import ReportResultRow from './ReportResultRow';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
+import Comments from '../../models/Comments';
 
 export default function ReportPage2() {
 	const focusId = useSelector(({ focusId }: RootState) => focusId);
 	const results = useSelector(({ results }: RootState) => results);
 	const profiles = useSelector(({ profiles }: RootState) => profiles);
+	const comments = useSelector(({ comments }: RootState) => comments);
 
 	const [profile, setProfile] = useState<Profiles>();
 	const [result, setResult] = useState<Results>();
+	const [comment, setComment] = useState<Comments>();
 
 	useEffect(() => {
 		if (profiles[focusId]) setProfile(profiles[focusId]);
@@ -24,6 +27,10 @@ export default function ReportPage2() {
 	useEffect(() => {
 		if (results[focusId]) setResult(results[focusId]);
 	}, [results, focusId]);
+
+	useEffect(() => {
+		if (comments[focusId]) setComment(comments[focusId]);
+	}, [comments, focusId]);
 
 	return (
 		<S.Page2Container id='page2'>
@@ -170,6 +177,7 @@ export default function ReportPage2() {
 					value1={result?.getCardSorting()?.getTTtc() as number}
 					value2={result?.getCardSorting()?.getPEtc() as number}
 					value3={result?.getCardSorting()?.getNEtc() as number}
+					comment={comment?.getCardSortingComment()}
 				/>
 			</S.ContentContainer>
 		</S.Page2Container>

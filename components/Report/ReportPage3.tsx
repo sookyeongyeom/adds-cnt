@@ -6,16 +6,23 @@ import { WordColorLabels, TrailMakingLabels } from '../../constants/tests';
 import Colors from '../../constants/colors';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
+import Comments from '../../models/Comments';
 
 export default function ReportPage3() {
 	const focusId = useSelector(({ focusId }: RootState) => focusId);
 	const results = useSelector(({ results }: RootState) => results);
+	const comments = useSelector(({ comments }: RootState) => comments);
 
 	const [result, setResult] = useState<Results>();
+	const [comment, setComment] = useState<Comments>();
 
 	useEffect(() => {
 		if (results[focusId]) setResult(results[focusId]);
 	}, [results, focusId]);
+
+	useEffect(() => {
+		if (comments[focusId]) setComment(comments[focusId]);
+	}, [comments, focusId]);
 
 	return (
 		<S.Page3Container id='page3'>
@@ -34,6 +41,7 @@ export default function ReportPage3() {
 					value1={result?.getWordColor()?.getTC1() as number}
 					value2={result?.getWordColor()?.getTC2() as number}
 					value3={result?.getWordColor()?.getTC5() as number}
+					comment={comment?.getWordColorComment()}
 				/>
 				<ReportResultRow
 					title={'3. 선로 잇기 검사'}
@@ -45,18 +53,11 @@ export default function ReportPage3() {
 					label2={TrailMakingLabels.TC2}
 					value1={result?.getTrailMaking()?.getTC1() as number}
 					value2={result?.getTrailMaking()?.getTC2() as number}
+					comment={comment?.getTrailMakingComment()}
 				/>
 				<section>
 					<h1>전체 요약</h1>
-					<div>
-						검사 결과, 목표지향적 행동에 필수적으로 요구되는 추상적 문제해결력은 정상 범위 내에서
-						발휘되었습니다. 단, 응답 '속도＇가 중요한 과제들에서는 수행이 상대적으로 저조한
-						편이었습니다. (스트룹 검사 결과, 과제에서 요구되는 방식으로 반응을 억제하는 능력이 여타
-						능력에 비해 뚜렷하게 저조한 것으로 나타납니다. 선로잇기 검사의 경우, 특히 TMT-B 시행 중
-						‘가-나-다-’ 순서를 정확하게 알지 못해 제대로 수행하기 어려워했습니다.) 실생활에서도
-						반응속도 지연 등을 포함하여 주의력 문제가 나타나는 경우라면 6개월~1년 이내 재검사를
-						권합니다. (본 연구에서도 1년 후 재검사를 시행할 예정입니다.)
-					</div>
+					<div>{comment?.getTotalComment()}</div>
 				</section>
 			</S.ContentContainer>
 		</S.Page3Container>
