@@ -6,12 +6,14 @@ import ReportPage3 from './ReportPage3';
 import Colors from '../../constants/colors';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
+import { TotalContainerProps } from './styled';
 
-export default function ReportTotal({ page }: ReportTotalProps) {
+export default function ReportTotal({}: ReportTotalProps) {
 	const focusId = useSelector(({ focusId }: RootState) => focusId);
+	const scale = useSelector(({ scale }: RootState) => scale);
 
 	return (
-		<S.TotalContainer>
+		<S.TotalContainer scale={scale}>
 			{focusId && (
 				<>
 					<ReportPage1 />
@@ -24,8 +26,14 @@ export default function ReportTotal({ page }: ReportTotalProps) {
 }
 
 namespace S {
-	export const TotalContainer = styled.div`
+	export const TotalContainer = styled.div<TotalContainerProps>`
 		margin: 0 auto;
+		transform: ${(props) => `scale(${props.scale}%)`};
+		transform-origin: center top;
+
+		@media print {
+			transform: none;
+		}
 
 		> div {
 			width: 210mm;

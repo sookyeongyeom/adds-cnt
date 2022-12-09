@@ -14,3 +14,7 @@ export interface SelectSectionProps {
 export interface DropDownBtnProps {
 	isOpened?: boolean;
 }
+
+export type MainContainerProps = {
+	scale: number;
+};

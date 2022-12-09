@@ -1,7 +1,5 @@
 import { GraphTotalProps } from '../Graph/props';
-export interface ReportTotalProps {
-	page: number;
-}
+export interface ReportTotalProps {}
 
 export interface ReportResultRowProps extends GraphTotalProps {
 	title: string;
