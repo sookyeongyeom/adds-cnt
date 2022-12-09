@@ -36,3 +36,8 @@ export interface FileStatusProps extends ChildrenType {
 export interface PatientProps extends ChildrenType {
 	patientId: string;
 }
+
+export interface DropDownElementProps {
+	onClick: (e: React.MouseEvent, fileId: string) => void;
+	filelist: string[];
+}

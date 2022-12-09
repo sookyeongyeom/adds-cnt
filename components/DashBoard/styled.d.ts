@@ -10,3 +10,7 @@ export interface DrawerTriggerAreaProps {
 export interface SelectSectionProps {
 	isResult?: boolean;
 }
+
+export interface DropDownBtnProps {
+	isOpened?: boolean;
+}
