@@ -9,7 +9,7 @@ import IconButton from '../Elements/IconButton';
 import getResultFiles from '../../utils/getResultFiles';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../modules/index';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import getFiles from '../../utils/getFiles';
 import { selectProfileFile, selectCommentFile } from '../../modules/selectFiles';
 import Keys from '../../constants/keys';
@@ -21,17 +21,19 @@ export default function DashBoardSelectModal({ onCancel, onConfirm }: DashBoardM
 	const [openDropDown, setOpenDropDown] = useState(0);
 	const [filelist, setFileList] = useState([]);
 	const dispatch = useDispatch();
-	const onSetProfileFile = (fileId: string) => dispatch(selectProfileFile(fileId));
-	const onSetCommentFile = (fileId: string) => dispatch(selectCommentFile(fileId));
+	const onSetProfileFile = ({ fileId, fileName }: { [key: string]: string }) =>
+		dispatch(selectProfileFile({ fileId, fileName }));
+	const onSetCommentFile = ({ fileId, fileName }: { [key: string]: string }) =>
+		dispatch(selectCommentFile({ fileId, fileName }));
 
-	const onClickProfileFile = async (e: React.MouseEvent, fileId: string) => {
+	const onClickProfileFile = async (e: React.MouseEvent, fileId: string, fileName: string) => {
 		e.stopPropagation();
-		onSetProfileFile(fileId);
+		onSetProfileFile({ fileId, fileName });
 	};
 
-	const onClickCommentFile = async (e: React.MouseEvent, fileId: string) => {
+	const onClickCommentFile = async (e: React.MouseEvent, fileId: string, fileName: string) => {
 		e.stopPropagation();
-		onSetCommentFile(fileId);
+		onSetCommentFile({ fileId, fileName });
 	};
 
 	const onOpenDropDown = async (idx: number) => {
@@ -67,7 +69,9 @@ export default function DashBoardSelectModal({ onCancel, onConfirm }: DashBoardM
 						onClick={() => onOpenDropDown(1)}
 						onBlur={() => onCloseDropDown(1)}
 						isOpened={openDropDown === 1}>
-						{profileFile ? profileFile : 'Profiles 폴더에 포함된 파일 중 하나를 선택해주세요.'}
+						{profileFile.fileName
+							? profileFile.fileName
+							: 'Profiles 폴더에 포함된 파일 중 하나를 선택해주세요.'}
 						{openDropDown === 1 && (
 							<DropDownElement onClick={onClickProfileFile} filelist={filelist} />
 						)}
@@ -79,7 +83,9 @@ export default function DashBoardSelectModal({ onCancel, onConfirm }: DashBoardM
 						onClick={() => onOpenDropDown(2)}
 						onBlur={() => onCloseDropDown(2)}
 						isOpened={openDropDown === 2}>
-						{commentFile ? commentFile : 'Comments 폴더에 포함된 파일 중 하나를 선택해주세요.'}
+						{commentFile.fileName
+							? commentFile.fileName
+							: 'Comments 폴더에 포함된 파일 중 하나를 선택해주세요.'}
 						{openDropDown === 2 && (
 							<DropDownElement onClick={onClickCommentFile} filelist={filelist} />
 						)}
@@ -95,7 +101,7 @@ const DropDownElement = ({ onClick, filelist }: DropDownElementProps) => {
 		<S.DropDown>
 			{filelist &&
 				filelist.map((file, i) => (
-					<p onClick={(e) => onClick(e, file[0])} key={i}>
+					<p onClick={(e) => onClick(e, file[0], file[1])} key={i}>
 						{file[1]}
 					</p>
 				))}

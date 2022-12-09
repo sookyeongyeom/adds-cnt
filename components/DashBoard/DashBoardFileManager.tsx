@@ -27,10 +27,10 @@ export default function DashBoardFileManager({ onClickOpenSelect }: DashBoardFil
 			</S.FileAction>
 			<FileStatus title={'검사결과'}>{Object.keys(results).length}개의 데이터</FileStatus>
 			<FileStatus title={'신상정보'}>
-				{profileFile ? profileFile : '선택된 파일이 없습니다.'}
+				{profileFile.fileName ? profileFile.fileName : '선택된 파일이 없습니다.'}
 			</FileStatus>
 			<FileStatus title={'결과해석'}>
-				{commentFile ? commentFile : '선택된 파일이 없습니다.'}
+				{commentFile.fileName ? commentFile.fileName : '선택된 파일이 없습니다.'}
 			</FileStatus>
 		</S.FileManagerContainer>
 	);
