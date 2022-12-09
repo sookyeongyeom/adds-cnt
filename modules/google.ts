@@ -63,6 +63,7 @@ function* logoutSaga(): Generator<any> {
 	yield put(setProfilePicture(''));
 	localStorage.removeItem('authToken');
 	localStorage.removeItem('focusId');
+	window.location.reload();
 }
 
 export function* googleSaga() {
