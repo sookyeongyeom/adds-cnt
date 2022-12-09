@@ -11,6 +11,8 @@ export default function DashBoardFileManager({ onClickOpenSelect }: DashBoardFil
 	const results = useSelector(({ results }: RootState) => results);
 	const { profileFile, commentFile } = useSelector(({ selectFiles }: RootState) => selectFiles);
 
+	const onClickDrive = () => window.open('https://drive.google.com/drive/u/2/my-drive', '_blank');
+
 	return (
 		<S.FileManagerContainer>
 			<S.Title>파일관리자</S.Title>
@@ -18,8 +20,8 @@ export default function DashBoardFileManager({ onClickOpenSelect }: DashBoardFil
 				<Button onClick={console.log} buttonType={ButtonTypes.small}>
 					도움말
 				</Button>
-				<Button onClick={console.log} buttonType={ButtonTypes.small}>
-					파일업로드
+				<Button onClick={onClickDrive} buttonType={ButtonTypes.small}>
+					드라이브
 				</Button>
 				<Button onClick={onClickOpenSelect} buttonType={ButtonTypes.small}>
 					파일선택
