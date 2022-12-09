@@ -9,6 +9,8 @@ import { setResults } from '../modules/results';
 import { store } from '../pages/_app';
 import { ProfilesValueType, ResultsValueType } from '../@types/context';
 import { setProfiles } from '../modules/profiles';
+import excelSerialDateToJSDate from './excelSerialDateToJSDate';
+import calculateAge from './calculateAge';
 
 export default function readResultFile(
 	file: any,
@@ -35,7 +37,8 @@ export default function readResultFile(
 				if (!i) {
 					patientId = `${row.PatientID}`;
 					name = row.이름;
-					age = row.생년월일;
+					const birthDate = excelSerialDateToJSDate(row.생년월일);
+					age = calculateAge(birthDate);
 					sex = row.성별;
 				}
 				const testType = row.검사이름;

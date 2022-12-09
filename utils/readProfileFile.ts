@@ -3,6 +3,8 @@ import Profiles from '../models/Profiles';
 import { store } from '../pages/_app';
 import { setProfiles } from '../modules/profiles';
 import { ProfilesValueType } from '../@types/context';
+import excelSerialDateToJSDate from './excelSerialDateToJSDate';
+import calculateAge from './calculateAge';
 
 export default function readProfileFile(file: any) {
 	let reader = new FileReader();
@@ -18,10 +20,14 @@ export default function readProfileFile(file: any) {
 			rows.forEach((row: any) => {
 				const patientId = `${row.PatientID}`;
 				const name = row.이름;
-				const age = row.생년월일;
+				const birthDate = excelSerialDateToJSDate(row.생년월일);
+				const age = calculateAge(birthDate);
 				const sex = row.성별;
 				const school = row.학교;
-				const date = row.실시일;
+				const [month, day, year] = excelSerialDateToJSDate(row.실시일)
+					.toLocaleDateString()
+					.split('/');
+				const date = year + '-' + month.padStart(2, '0') + '-' + day.padStart(2, '0');
 
 				const profiles = new Profiles(name, age, sex, school, date);
 				profilesTemp[patientId] = profiles;
