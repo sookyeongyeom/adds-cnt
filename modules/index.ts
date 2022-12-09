@@ -5,11 +5,12 @@ import results from './results';
 import profiles from './profiles';
 import focusId, { focusIdSaga } from './focusId';
 import comments from './comments';
+import selectFiles, { selectFilesSaga } from './selectFiles';
 
-const rootReducer = combineReducers({ google, results, profiles, comments, focusId });
+const rootReducer = combineReducers({ google, results, profiles, comments, focusId, selectFiles });
 
 export function* rootSaga() {
-	yield all([googleSaga(), focusIdSaga()]);
+	yield all([googleSaga(), focusIdSaga(), selectFilesSaga()]);
 }
 
 export default rootReducer;
