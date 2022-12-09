@@ -9,6 +9,7 @@ export default class Fonts {
 	static subtitle14medium = 'font-weight:500; font-size:1.4rem;';
 
 	static body16regular = 'font-weight:400; font-size:1.6rem;';
+	static body15regular = 'font-weight:400; font-size:1.5rem;';
 	static body14regular = 'font-weight:400; font-size:1.4rem;';
 	static body12medium = 'font-weight:500; font-size:1.2rem;';
 
