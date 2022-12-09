@@ -9,6 +9,7 @@ import { RootState } from '../../modules';
 
 export default function DashBoardFileManager({ onClickOpenSelect }: DashBoardFileManagerProps) {
 	const results = useSelector(({ results }: RootState) => results);
+	const { profileFile, commentFile } = useSelector(({ selectFiles }: RootState) => selectFiles);
 
 	return (
 		<S.FileManagerContainer>
@@ -25,8 +26,12 @@ export default function DashBoardFileManager({ onClickOpenSelect }: DashBoardFil
 				</Button>
 			</S.FileAction>
 			<FileStatus title={'검사결과'}>{Object.keys(results).length}개의 데이터</FileStatus>
-			<FileStatus title={'신상정보'}>신상정보</FileStatus>
-			<FileStatus title={'결과해석'}>결과해석</FileStatus>
+			<FileStatus title={'신상정보'}>
+				{profileFile ? profileFile : '선택된 파일이 없습니다.'}
+			</FileStatus>
+			<FileStatus title={'결과해석'}>
+				{commentFile ? commentFile : '선택된 파일이 없습니다.'}
+			</FileStatus>
 		</S.FileManagerContainer>
 	);
 }
@@ -34,7 +39,7 @@ export default function DashBoardFileManager({ onClickOpenSelect }: DashBoardFil
 function FileStatus({ children, title }: FileStatusProps) {
 	return (
 		<S.FileStatusContainer>
-			{title}
+			<span>{title}</span>
 			<S.FileName>{children}</S.FileName>
 		</S.FileStatusContainer>
 	);
@@ -68,14 +73,21 @@ namespace S {
 		align-items: center;
 		gap: 1rem;
 		padding: 1rem;
+
+		> span {
+			flex-shrink: 0;
+		}
 	`;
 
-	export const FileName = styled.div`
+	export const FileName = styled.span`
 		${Fonts.subtitle14medium}
-		background-color: ${Colors.blue100};
 		color: ${Colors.gray400};
+		background-color: ${Colors.blue100};
 		border-radius: 0.6rem;
-		flex-grow: 1;
+		width: 19.7rem;
 		padding: 1rem;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	`;
 }
