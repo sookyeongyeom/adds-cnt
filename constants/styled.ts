@@ -53,25 +53,30 @@ export namespace SC {
 	export const ResultRow = styled(Row)`
 		text-align: left;
 		flex-direction: column;
+		margin-bottom: 1.5rem;
 
 		> section:first-of-type {
 			background-color: ${Colors.gray100};
 			padding: 1rem;
 			margin-bottom: 1rem;
 
-			h1 {
+			> h1 {
 				font-size: 2rem;
 				font-weight: 600;
-				margin-bottom: 0.7rem;
+				line-height: 120%;
+				padding-bottom: 0.7rem;
+				border-bottom: 0.1rem dashed ${Colors.gray400};
 
-				span {
-					font-size: 1.4rem;
+				> span {
+					font-size: 1.3rem;
 					font-weight: 500;
 				}
 			}
 
-			h2 {
+			> h2 {
 				font-size: 1.4rem;
+				padding-top: 0.7rem;
+				line-height: 130%;
 			}
 		}
 
@@ -79,13 +84,26 @@ export namespace SC {
 			display: flex;
 			width: 100%;
 
-			section:first-of-type {
+			> section:first-of-type {
 				width: 55%;
 			}
 
-			section:last-of-type {
-				background-color: ${Colors.blue100};
+			> section:last-of-type {
+				background-color: ${Colors.blue200};
 				width: 45%;
+				padding: 1.2rem;
+
+				> h1 {
+					${Fonts.subtitle16semibold}
+					margin-bottom:0.7rem;
+				}
+
+				> pre {
+					${Fonts.body15regular}
+					line-height: 130%;
+					white-space: pre-wrap;
+					overflow: hidden;
+				}
 			}
 		}
 	`;
