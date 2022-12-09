@@ -40,6 +40,10 @@ export default function GraphTotal({
 					)}
 				</section>
 			</S.GraphAxis>
+			<S.T>
+				<div />
+				T점수
+			</S.T>
 		</S.GraphContainer>
 	);
 }
@@ -47,11 +51,29 @@ export default function GraphTotal({
 namespace S {
 	export const GraphContainer = styled.div`
 		padding: 1rem 4rem;
-		padding-left: 8.5rem;
-		padding-bottom: 2rem;
-		height: 22rem;
+		padding-left: 8rem;
+		padding-bottom: 0.5rem;
+		height: 24rem;
 		display: flex;
 		align-items: center;
+		position: relative;
+	`;
+
+	export const T = styled.div`
+		position: absolute;
+		right: 2rem;
+		top: 0.5rem;
+		font-size: 1rem;
+		font-weight: 500;
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+
+		> div {
+			background-color: ${Colors.blue500};
+			width: 0.8rem;
+			height: 0.8rem;
+		}
 	`;
 
 	export const GraphAxis = styled.div<GraphAxisProps>`
@@ -68,7 +90,7 @@ namespace S {
 			position: absolute;
 			left: 0;
 			bottom: 0;
-			transform: translate(-50%, 150%);
+			transform: translate(-50%, 160%);
 			font-size: 1.2rem;
 		}
 
@@ -82,7 +104,7 @@ namespace S {
 				position: absolute;
 				bottom: 0;
 				right: 0;
-				transform: translate(50%, 150%);
+				transform: translate(50%, 160%);
 				font-size: 1.2rem;
 			}
 
@@ -97,7 +119,7 @@ namespace S {
 
 			&:nth-of-type(2) {
 				> div {
-					border-color: red;
+					border-color: ${Colors.red700};
 					z-index: 2;
 				}
 
@@ -108,7 +130,7 @@ namespace S {
 
 			&:nth-of-type(3) {
 				> div {
-					border-color: blue;
+					border-color: ${Colors.blue900};
 					z-index: 2;
 					border-style: dashed;
 				}
@@ -134,18 +156,19 @@ namespace S {
 			justify-content: center;
 			background-color: transparent !important;
 			height: 100%;
-			left: -8.3rem;
+			left: -8.4rem;
 
 			> div {
-				width: 35.9rem;
+				width: 36.55rem;
 				flex-grow: 1;
 				display: flex;
 				align-items: center;
-				gap: 0.3rem;
+				gap: 0.4rem;
 
 				> div {
 					&:first-of-type {
-						font-size: 1.3rem;
+						font-size: 1.2rem;
+						line-height: 120%;
 						word-break: keep-all;
 						width: 8rem;
 						text-align: center;
@@ -173,7 +196,7 @@ namespace S {
 
 			> div:first-of-type {
 				> div:last-of-type {
-					width: ${(props) => props.value1 && props.value1 * 0.775 + '%'};
+					width: ${(props) => props.value1 && props.value1 * 0.774 + '%'};
 
 					&::after {
 						content: \'${(props) => props.value1 && props.value1}\';
@@ -183,7 +206,7 @@ namespace S {
 
 			> div:nth-of-type(2) {
 				> div:last-of-type {
-					width: ${(props) => props.value2 && props.value2 * 0.775 + '%'};
+					width: ${(props) => props.value2 && props.value2 * 0.774 + '%'};
 
 					&::after {
 						content: \'${(props) => props.value2 && props.value2}\';
@@ -193,7 +216,7 @@ namespace S {
 
 			> div:nth-of-type(3) {
 				> div:last-of-type {
-					width: ${(props) => props.value3 && props.value3 * 0.775 + '%'};
+					width: ${(props) => props.value3 && props.value3 * 0.774 + '%'};
 
 					&::after {
 						content: \'${(props) => props.value3 && props.value3}\';
