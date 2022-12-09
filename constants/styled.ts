@@ -85,7 +85,7 @@ export namespace SC {
 
 			section:last-of-type {
 				background-color: ${Colors.blue100};
-				flex-grow: 1;
+				width: 45%;
 			}
 		}
 	`;
