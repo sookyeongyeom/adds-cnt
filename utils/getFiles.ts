@@ -23,11 +23,6 @@ export default async function getFiles(gapi: any, authToken: string, folderId: s
 		console.log('No files found');
 		return;
 	}
-	const output = files.reduce(
-		(str: any, file: any) => `${str}${file.name} (${file.id})\n`,
-		'--- Files ---\n',
-	);
-	// console.log(output);
 
 	return files.map((file: any) => [file.id, file.name]);
 }
