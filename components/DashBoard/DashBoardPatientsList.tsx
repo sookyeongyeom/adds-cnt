@@ -7,14 +7,15 @@ import { RootState } from '../../modules/index';
 import { selectFocusId } from '../../modules/focusId';
 
 export default function DashBoardPatientsList() {
+	const results = useSelector(({ results }: RootState) => results);
 	const profiles = useSelector(({ profiles }: RootState) => profiles);
 
 	return (
 		<S.PatientsListContainer>
-			<S.PatientsCount>총 {Object.keys(profiles).length}명</S.PatientsCount>
-			{Object.keys(profiles).map((v, i) => (
-				<Patient key={i} patientId={v}>
-					{v} {profiles[v].getName()}
+			<S.PatientsCount>총 {Object.keys(results).length}명</S.PatientsCount>
+			{Object.keys(results).map((patientId, i) => (
+				<Patient key={i} patientId={patientId}>
+					{patientId} {profiles[patientId] && profiles[patientId].getName()}
 				</Patient>
 			))}
 		</S.PatientsListContainer>
