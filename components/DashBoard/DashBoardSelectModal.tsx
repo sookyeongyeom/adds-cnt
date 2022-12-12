@@ -71,7 +71,7 @@ export default function DashBoardSelectModal({ onCancel, onConfirm }: DashBoardM
 						isOpened={openDropDown === 1}>
 						{profileFile.fileName
 							? profileFile.fileName
-							: 'Profiles 폴더에 포함된 파일 중 하나를 선택해주세요.'}
+							: 'Profile 폴더에 포함된 파일 중 하나를 선택해주세요.'}
 						{openDropDown === 1 && (
 							<DropDownElement onClick={onClickProfileFile} filelist={filelist} />
 						)}
@@ -85,7 +85,7 @@ export default function DashBoardSelectModal({ onCancel, onConfirm }: DashBoardM
 						isOpened={openDropDown === 2}>
 						{commentFile.fileName
 							? commentFile.fileName
-							: 'Comments 폴더에 포함된 파일 중 하나를 선택해주세요.'}
+							: 'Comment 폴더에 포함된 파일 중 하나를 선택해주세요.'}
 						{openDropDown === 2 && (
 							<DropDownElement onClick={onClickCommentFile} filelist={filelist} />
 						)}
