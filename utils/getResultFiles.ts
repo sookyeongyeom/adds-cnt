@@ -1,6 +1,6 @@
 import Keys from '../constants/keys';
 import getResultFile from './getResultFile';
-import { ResultsValueType, ProfilesValueType } from '../@types/context';
+import { ResultsValueType } from '../@types/context';
 
 export default async function getResultFiles(gapi: any, authToken: string) {
 	if (gapi.client.getToken() === null && authToken) {
@@ -27,15 +27,9 @@ export default async function getResultFiles(gapi: any, authToken: string) {
 		console.log('No files found');
 		return;
 	}
-	const output = files.reduce(
-		(str: any, file: any) => `${str}${file.name} (${file.id})\n`,
-		'--- Files ---\n',
-	);
-	// console.log(output);
 
 	const resultsTemp: ResultsValueType = {};
-	const profilesTemp: ProfilesValueType = {};
 	const loadingSet = new Set<string>();
 
-	files.forEach((file: any) => getResultFile(gapi, file.id, resultsTemp, profilesTemp, loadingSet));
+	files.forEach((file: any) => getResultFile(gapi, file.id, resultsTemp, loadingSet));
 }

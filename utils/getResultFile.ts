@@ -1,11 +1,10 @@
 import readResultFile from './readResultFile';
-import { ResultsValueType, ProfilesValueType } from '../@types/context';
+import { ResultsValueType } from '../@types/context';
 
 export default async function getResultFile(
 	gapi: any,
 	fileId: string,
 	resultsTemp: ResultsValueType,
-	profilesTemp: ProfilesValueType,
 	loadingSet: Set<string>,
 ) {
 	try {
@@ -25,7 +24,7 @@ export default async function getResultFile(
 			type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 		});
 
-		readResultFile(file, fileId, resultsTemp, profilesTemp, loadingSet);
+		readResultFile(file, fileId, resultsTemp, loadingSet);
 	} catch (e: any) {
 		console.log(e.message);
 	}

@@ -1,22 +1,17 @@
 import * as XLSX from 'xlsx';
 import TestTypes from '../constants/tests';
 import CardSortingTest from '../models/CardSortingTest';
-import Profiles from '../models/Profiles';
 import Results from '../models/Results';
 import TrailMakingTest from '../models/TrailMakingTest';
 import WordColorTest from '../models/WordColorTest';
 import { setResults } from '../modules/results';
 import { store } from '../pages/_app';
-import { ProfilesValueType, ResultsValueType } from '../@types/context';
-import { setProfiles } from '../modules/profiles';
-import excelSerialDateToJSDate from './excelSerialDateToJSDate';
-import calculateAge from './calculateAge';
+import { ResultsValueType } from '../@types/context';
 
 export default function readResultFile(
 	file: any,
 	fileId: string,
 	resultsTemp: ResultsValueType,
-	profilesTemp: ProfilesValueType,
 	loadingSet: Set<string>,
 ) {
 	let reader = new FileReader();
@@ -26,21 +21,11 @@ export default function readResultFile(
 		const workBook = XLSX.read(data, { type: 'binary' });
 
 		let patientId = '';
-		let name = '';
-		let age = 0;
-		let sex = '';
-
 		const results = new Results();
 		workBook.SheetNames.forEach((sheetName, i) => {
 			const row = XLSX.utils.sheet_to_json(workBook.Sheets[sheetName])[0] as any;
 			if (row) {
-				if (!i) {
-					patientId = `${row.PatientID}`;
-					name = row.이름;
-					const birthDate = excelSerialDateToJSDate(row.생년월일);
-					age = calculateAge(birthDate);
-					sex = row.성별;
-				}
+				patientId = `${row.PatientID}`;
 				const testType = row.검사이름;
 				if (testType === TestTypes.cardSorting) {
 					const cardSorting = new CardSortingTest(row.TTtc, row.PEtc, row.NEtc);
@@ -57,16 +42,10 @@ export default function readResultFile(
 			}
 		});
 
-		const profiles = new Profiles(name, age, sex);
-
 		resultsTemp[patientId] = results;
-		profilesTemp[patientId] = profiles;
 		loadingSet.delete(fileId);
 
-		if (!loadingSet.size) {
-			store.dispatch(setResults(resultsTemp));
-			store.dispatch(setProfiles(profilesTemp));
-		}
+		if (!loadingSet.size) store.dispatch(setResults(resultsTemp));
 	};
 
 	if (file !== null) reader.readAsBinaryString(file);
