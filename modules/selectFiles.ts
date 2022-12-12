@@ -20,6 +20,7 @@ function* selectProfileFileSaga(action: any): Generator<any> {
 	const payload = action.payload;
 	yield put(setProfileFile(payload));
 	yield getProfileFile(gapi, payload.fileId);
+	localStorage.setItem('profileFile', JSON.stringify(payload));
 }
 
 function* selectCommentFileSaga(action: any): Generator<any> {
@@ -27,6 +28,7 @@ function* selectCommentFileSaga(action: any): Generator<any> {
 	const payload = action.payload;
 	yield put(setCommentFile(payload));
 	yield getCommentFile(gapi, payload.fileId);
+	localStorage.setItem('commentFile', JSON.stringify(payload));
 }
 
 export function* selectFilesSaga() {

@@ -7,6 +7,7 @@ import { setGapi, setGoogle, setTokenClient, login } from '../modules/google';
 import Keys from '../constants/keys';
 import { RootState } from '../modules/index';
 import { setFocusId } from '../modules/focusId';
+import { selectProfileFile, selectCommentFile } from '../modules/selectFiles';
 
 declare let gapi: any;
 declare let google: any;
@@ -20,10 +21,22 @@ export default function Home() {
 	const onInitTokenClient: any = (tokenClient: any) => dispatch(setTokenClient(tokenClient));
 	const onLogin: any = (authToken: string) => dispatch(login(authToken));
 	const onRetrieveFocusId: any = (focusId: string) => dispatch(setFocusId(focusId));
+	const onRetrieveProfileFile: any = ({ fileId, fileName }: { [key: string]: string }) =>
+		dispatch(selectProfileFile({ fileId, fileName }));
+	const onRetrieveCommentFile: any = ({ fileId, fileName }: { [key: string]: string }) =>
+		dispatch(selectCommentFile({ fileId, fileName }));
 
 	useEffect(() => {
 		const authToken = localStorage.getItem('authToken');
-		if (GlobalGapi && GlobalGoogle && authToken) onLogin(authToken);
+		if (GlobalGapi && GlobalGoogle && authToken) {
+			onLogin(authToken);
+
+			const profileFile = localStorage.getItem('profileFile');
+			if (profileFile) onRetrieveProfileFile(JSON.parse(profileFile));
+
+			const commentFile = localStorage.getItem('commentFile');
+			if (commentFile) onRetrieveCommentFile(JSON.parse(commentFile));
+		}
 	}, [GlobalGapi, GlobalGoogle]);
 
 	useEffect(() => {
