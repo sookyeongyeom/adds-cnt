@@ -41,6 +41,7 @@ function* loginSaga(action: any): Generator<any> {
 		const photo = response.result.picture;
 		yield put(setProfilePicture(photo));
 	} catch (err: any) {
+		alert('로그인이 만료되었습니다. 다시 로그인해주세요.');
 		yield put(logout());
 	}
 
@@ -61,8 +62,7 @@ function* logoutSaga(): Generator<any> {
 	yield put(setComments({}));
 	yield put(setFocusId(''));
 	yield put(setProfilePicture(''));
-	localStorage.removeItem('authToken');
-	localStorage.removeItem('focusId');
+	localStorage.clear();
 	window.location.reload();
 }
 
