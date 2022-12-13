@@ -5,11 +5,10 @@ import DashBoardResult from './DashBoardResult';
 import DashBoardDrawer from './DashBoardDrawer';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
-import { DashBoardExplorerAndInspectorProps } from './props';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
 
-export default function DashBoardInspector({ isUIOpen }: DashBoardExplorerAndInspectorProps) {
+export default function DashBoardInspector({ isUIOpen }: DashBoardInspectorProps) {
 	const focusId = useSelector(({ focusId }: RootState) => focusId);
 	const profiles = useSelector(({ profiles }: RootState) => profiles);
 

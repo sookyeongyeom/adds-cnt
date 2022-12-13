@@ -1,7 +1,5 @@
-import { GraphTotalProps } from './props';
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
-import { GraphAxisProps } from './styled';
 
 export default function GraphTotal({
 	label1,

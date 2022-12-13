@@ -1,9 +1,7 @@
-import { DashBoardModalProps, DropDownElementProps } from './props';
 import Modal from '../Elements/Modal';
 import styled from 'styled-components';
 import Fonts from '../../constants/fonts';
 import Colors from '../../constants/colors';
-import { DropDownBtnProps, SelectSectionProps } from './styled';
 import { svgRefresh } from '../../constants/svgs';
 import IconButton from '../Elements/IconButton';
 import getResultFiles from '../../utils/getResultFiles';
@@ -14,7 +12,7 @@ import getFiles from '../../utils/getFiles';
 import { selectProfileFile, selectCommentFile } from '../../modules/selectFiles';
 import Keys from '../../constants/keys';
 
-export default function DashBoardSelectModal({ onCancel, onConfirm }: DashBoardModalProps) {
+export default function DashBoardSelectModal({ onCancel, onConfirm }: DashBoardSelectModalProps) {
 	const { gapi, authToken } = useSelector(({ google }: RootState) => google);
 	const { profileFile, commentFile } = useSelector(({ selectFiles }: RootState) => selectFiles);
 	const results = useSelector(({ results }: RootState) => results);

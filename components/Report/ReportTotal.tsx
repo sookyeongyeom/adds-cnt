@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 import ReportPage1 from './ReportPage1';
-import { ReportTotalProps } from './props';
 import ReportPage2 from './ReportPage2';
 import ReportPage3 from './ReportPage3';
 import Colors from '../../constants/colors';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
-import { TotalContainerProps } from './styled';
 
-export default function ReportTotal({}: ReportTotalProps) {
+export default function ReportTotal() {
 	const focusId = useSelector(({ focusId }: RootState) => focusId);
 	const scale = useSelector(({ scale }: RootState) => scale);
 

@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import Sizes from '../../constants/sizes';
-import { DrawerProps } from './styled';
-import { DashBoardDrawerProps } from './props';
 import Colors from '../../constants/colors';
 
 export default function DashBoardDrawer({ children, isLeft, isUIOpen }: DashBoardDrawerProps) {

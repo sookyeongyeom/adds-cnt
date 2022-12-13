@@ -6,7 +6,6 @@ import { SC } from '../../constants/styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { scaleDown, scaleUp } from '../../modules/scale';
 import { RootState } from '../../modules/index';
-import { MainContainerProps } from './styled';
 
 export default function DashBoardMain() {
 	const scale = useSelector(({ scale }: RootState) => scale);

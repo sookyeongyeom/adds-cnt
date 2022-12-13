@@ -4,7 +4,6 @@ import Sizes from '../../constants/sizes';
 import Button from '../Elements/Button';
 import { ButtonTypes } from '../../constants/buttons';
 import Fonts from '../../constants/fonts';
-import { DashBoardHeaderProps } from './props';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../modules/index';

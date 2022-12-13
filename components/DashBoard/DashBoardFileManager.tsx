@@ -3,7 +3,6 @@ import Colors from '../../constants/colors';
 import Button from '../Elements/Button';
 import { ButtonTypes } from '../../constants/buttons';
 import Fonts from '../../constants/fonts';
-import { DashBoardFileManagerProps, FileStatusProps } from './props';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
 

@@ -1,6 +1,5 @@
 import { SC } from '../../constants/styled';
 import GraphTotal from '../Graph/GraphTotal';
-import { ReportResultRowProps } from './props';
 
 export default function ReportResultRow({
 	title,

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import usePreventScroll from '../../hooks/usePreventScroll';
-import { ModalProps } from './props';
 import Button from './Button';
 import { ButtonTypes } from '../../constants/buttons';
 

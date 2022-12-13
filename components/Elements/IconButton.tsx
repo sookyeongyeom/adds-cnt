@@ -1,4 +1,3 @@
-import { IconButtonProps } from './props';
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';

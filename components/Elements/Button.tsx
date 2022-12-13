@@ -1,8 +1,6 @@
-import { ButtonProps } from './props';
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import { ButtonStyles, ButtonTypes } from '../../constants/buttons';
-import { ButtonContainerProps } from './styled';
 
 export default function Button({ children, onClick, buttonType, isHidden }: ButtonProps) {
 	return (

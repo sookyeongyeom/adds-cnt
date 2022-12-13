@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
-import { PatientProps } from './props';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../modules/index';
 import { selectFocusId } from '../../modules/focusId';
