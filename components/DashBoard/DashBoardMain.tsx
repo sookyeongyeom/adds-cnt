@@ -38,7 +38,7 @@ export default function DashBoardMain() {
 }
 
 namespace S {
-	export const MainContainer = styled.div<MainContainerProps>`
+	export const MainContainer = styled.div<ZoomScaleProps>`
 		width: 100vw;
 		padding-top: calc(${Sizes.headerHeight} + 3rem);
 		padding-bottom: 3rem;

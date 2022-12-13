@@ -1,36 +1,31 @@
 /**
- * @for DashBoardDrawer */
+ * @by DashBoardDrawer */
 type DrawerProps = {
 	isOpen: boolean;
 	isLeft: boolean;
 };
 
 /**
- * @for DashBoardSelectModal */
+ * @by DashBoardSelectModal */
 type SelectSectionProps = {
 	isResult?: boolean;
 };
 
 /**
- * @for DashBoardSelectModal */
+ * @by DashBoardSelectModal */
 type DropDownBtnProps = {
 	isOpened?: boolean;
 };
 
 /**
- * @for DashBoardMain */
-type MainContainerProps = {
+ * @by DashBoardMain
+ * @by ReportTotal */
+type ZoomScaleProps = {
 	scale: number;
 };
 
 /**
- * @for ReportTotal */
-type TotalContainerProps = {
-	scale: number;
-};
-
-/**
- * @for GraphTotal */
+ * @by GraphTotal */
 type GraphAxisProps = {
 	value1: number;
 	value2: number;
@@ -38,7 +33,7 @@ type GraphAxisProps = {
 };
 
 /**
- * @for Button */
+ * @by Button */
 type ButtonContainerProps = {
 	buttonType: string;
 	isHidden?: boolean;

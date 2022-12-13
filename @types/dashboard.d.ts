@@ -1,5 +1,5 @@
 /**
- * @for Common */
+ * @base */
 type IsUIOpenType = {
 	isUIOpen: boolean;
 };

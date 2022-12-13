@@ -24,7 +24,7 @@ export default function ReportTotal() {
 }
 
 namespace S {
-	export const TotalContainer = styled.div<TotalContainerProps>`
+	export const TotalContainer = styled.div<ZoomScaleProps>`
 		margin: 0 auto;
 		transform: ${(props) => `scale(${props.scale}%)`};
 		transform-origin: center top;
