@@ -1,6 +1,6 @@
 import Keys from '../constants/keys';
 import getResultFile from './getResultFile';
-import { ResultsValueType } from '../@types/context';
+import { ResultsValueType } from '../@types/store';
 
 export default async function getResultFiles(gapi: any, authToken: string) {
 	if (gapi.client.getToken() === null && authToken) {

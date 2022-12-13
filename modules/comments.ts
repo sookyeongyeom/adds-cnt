@@ -1,5 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
-import { CommentsValueType } from '../@types/context';
+import { CommentsValueType } from '../@types/store';
 
 const SET_COMMENTS = 'results/SET_COMMENTS';
 

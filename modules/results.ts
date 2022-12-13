@@ -1,5 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
-import { ResultsValueType } from '../@types/context';
+import { ResultsValueType } from '../@types/store';
 
 const SET_RESULTS = 'results/SET_RESULTS';
 

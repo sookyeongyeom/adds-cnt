@@ -6,7 +6,7 @@ import TrailMakingTest from '../models/TrailMakingTest';
 import WordColorTest from '../models/WordColorTest';
 import { setResults } from '../modules/results';
 import { store } from '../pages/_app';
-import { ResultsValueType } from '../@types/context';
+import { ResultsValueType } from '../@types/store';
 
 export default function readResultFile(
 	file: any,

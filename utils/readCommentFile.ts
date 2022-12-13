@@ -1,6 +1,6 @@
 import * as XLSX from 'xlsx';
 import { store } from '../pages/_app';
-import { CommentsValueType } from '../@types/context';
+import { CommentsValueType } from '../@types/store';
 import TestTypes from '../constants/tests';
 import Comments from '../models/Comments';
 import { setComments } from '../modules/comments';

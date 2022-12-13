@@ -2,7 +2,7 @@ import * as XLSX from 'xlsx';
 import Profiles from '../models/Profiles';
 import { store } from '../pages/_app';
 import { setProfiles } from '../modules/profiles';
-import { ProfilesValueType } from '../@types/context';
+import { ProfilesValueType } from '../@types/store';
 import excelSerialDateToJSDate from './excelSerialDateToJSDate';
 import calculateAge from './calculateAge';
 

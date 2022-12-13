@@ -2,7 +2,6 @@ import { createAction, handleActions } from 'redux-actions';
 import { put, select, takeLatest } from 'redux-saga/effects';
 import { RootState } from '.';
 import getCommentFile from '../utils/getCommentFile';
-
 import getProfileFile from '../utils/getProfileFile';
 
 const SET_PROFILE_FILE = 'selectFiles/SET_PROFILE_FILE';

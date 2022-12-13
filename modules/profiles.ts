@@ -1,5 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
-import { ProfilesValueType } from '../@types/context';
+import { ProfilesValueType } from '../@types/store';
 
 const SET_PROFILES = 'profiles/SET_PROFILES';
 

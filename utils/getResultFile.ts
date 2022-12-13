@@ -1,5 +1,5 @@
 import readResultFile from './readResultFile';
-import { ResultsValueType } from '../@types/context';
+import { ResultsValueType } from '../@types/store';
 
 export default async function getResultFile(
 	gapi: any,
