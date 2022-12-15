@@ -52,8 +52,13 @@ namespace S {
 			}
 		}
 
-		div:last-of-type {
+		> div:last-of-type {
 			margin-bottom: 0;
+
+			@media print {
+				/* 마지막 빈 페이지 방지 */
+				page-break-after: auto;
+			}
 		}
 	`;
 }
