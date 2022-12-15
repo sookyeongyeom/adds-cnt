@@ -16,7 +16,7 @@ export default function DashBoardFileManager({ onClickOpenSelect }: DashBoardFil
 		<S.FileManagerContainer>
 			<S.Title>파일관리자</S.Title>
 			<S.FileAction>
-				<Button onClick={console.log} buttonType={ButtonTypes.small}>
+				<Button onClick={() => alert('미구현된 기능입니다.')} buttonType={ButtonTypes.small}>
 					도움말
 				</Button>
 				<Button onClick={onClickDrive} buttonType={ButtonTypes.small}>
