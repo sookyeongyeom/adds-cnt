@@ -11,22 +11,28 @@ export default function DashBoardComment() {
 
 	return (
 		<DashBoardCategory title='Result'>
-			<SC.CategorySection>
-				<div>Card Sorting</div>
-				<S.Comment>{comments[focusId] && comments[focusId].getCardSortingComment()}</S.Comment>
-			</SC.CategorySection>
-			<SC.CategorySection>
-				<div>Word Color</div>
-				<S.Comment>{comments[focusId] && comments[focusId].getWordColorComment()}</S.Comment>
-			</SC.CategorySection>
-			<SC.CategorySection>
-				<div>Trail Making</div>
-				<S.Comment>{comments[focusId] && comments[focusId].getTrailMakingComment()}</S.Comment>
-			</SC.CategorySection>
-			<SC.CategorySection>
-				<div>전체 요약</div>
-				<S.Comment>{comments[focusId] && comments[focusId].getTotalComment()}</S.Comment>
-			</SC.CategorySection>
+			{Object.keys(comments).length ? (
+				<>
+					<SC.CategorySection>
+						<div>Card Sorting</div>
+						<S.Comment>{comments[focusId] && comments[focusId].getCardSortingComment()}</S.Comment>
+					</SC.CategorySection>
+					<SC.CategorySection>
+						<div>Word Color</div>
+						<S.Comment>{comments[focusId] && comments[focusId].getWordColorComment()}</S.Comment>
+					</SC.CategorySection>
+					<SC.CategorySection>
+						<div>Trail Making</div>
+						<S.Comment>{comments[focusId] && comments[focusId].getTrailMakingComment()}</S.Comment>
+					</SC.CategorySection>
+					<SC.CategorySection>
+						<div>전체 요약</div>
+						<S.Comment>{comments[focusId] && comments[focusId].getTotalComment()}</S.Comment>
+					</SC.CategorySection>
+				</>
+			) : (
+				<SC.Guide>좌측 사이드바의 [파일선택]을 눌러 결과해석 파일을 선택해주세요</SC.Guide>
+			)}
 		</DashBoardCategory>
 	);
 }

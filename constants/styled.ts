@@ -26,6 +26,7 @@ export namespace SC {
 			${Fonts.body12medium}
 			color:${Colors.blue300};
 			margin-bottom: 0.5rem;
+			text-transform: uppercase;
 		}
 
 		&:last-of-type {
@@ -117,5 +118,17 @@ export namespace SC {
 	export const Underline = styled.span`
 		text-decoration: underline;
 		text-underline-position: below;
+	`;
+
+	export const Guide = styled.div`
+		${Fonts.heading18bold}
+		color:${Colors.gray400};
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -45%);
+		word-break: keep-all;
+		text-align: center;
+		line-height: 130%;
 	`;
 }
