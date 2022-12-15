@@ -38,3 +38,9 @@ type ButtonContainerProps = {
 	buttonType: string;
 	isHidden?: boolean;
 };
+
+/**
+ * @by DashBoardPatientsList */
+type PatientContainerProps = {
+	isFocused: boolean;
+};
