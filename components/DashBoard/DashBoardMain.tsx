@@ -6,6 +6,9 @@ import { SC } from '../../constants/styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { scaleDown, scaleUp } from '../../modules/scale';
 import { RootState } from '../../modules/index';
+import { svgZoomIn, svgZoomOut, svgPrinter } from '../../constants/svgs';
+import Colors from '../../constants/colors';
+import Fonts from '../../constants/fonts';
 
 export default function DashBoardMain() {
 	const scale = useSelector(({ scale }: RootState) => scale);
@@ -28,9 +31,14 @@ export default function DashBoardMain() {
 			<ReportTotal></ReportTotal>
 			<SC.DoNotPrint>
 				<S.Tool>
-					<IconButton onClick={onScaleDown}>축소</IconButton> {scale}%
-					<IconButton onClick={onScaleUp}>확대</IconButton>{' '}
-					<IconButton onClick={onClickPrint}>[Print]</IconButton>
+					<div>
+						<IconButton onClick={onScaleDown}>{svgZoomOut}</IconButton>
+						<S.Scale>{scale}%</S.Scale>
+						<IconButton onClick={onScaleUp}>{svgZoomIn}</IconButton>
+					</div>
+					<div>
+						<IconButton onClick={onClickPrint}>{svgPrinter}</IconButton>
+					</div>
 				</S.Tool>
 			</SC.DoNotPrint>
 		</S.MainContainer>
@@ -53,15 +61,39 @@ namespace S {
 	`;
 
 	export const Tool = styled.div`
-		background-color: lightblue;
+		background-color: rgba(55, 44, 44, 0.645);
+		box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 		width: fit-content;
 		position: fixed;
+		bottom: 4rem;
 		left: 50%;
 		transform: translateX(-50%);
-		bottom: 3rem;
 		margin: 0 auto;
-		padding: 1rem 1.5rem;
 		border-radius: 0.6rem;
 		z-index: 15;
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+
+		> div {
+			padding: 1rem 1.5rem;
+			display: flex;
+			align-items: center;
+
+			&:first-of-type {
+				gap: 0.6rem;
+			}
+
+			&:last-of-type {
+				background-color: rgba(55, 44, 44, 0.645);
+			}
+		}
+	`;
+
+	export const Scale = styled.div`
+		${Fonts.subtitle16semibold}
+		color:${Colors.blue300};
+		position: relative;
+		top: -0.15rem;
 	`;
 }
