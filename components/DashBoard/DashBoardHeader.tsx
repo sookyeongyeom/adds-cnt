@@ -35,6 +35,8 @@ export default function DashBoardHeader({ onClickToggleUI }: DashBoardHeaderProp
 	};
 
 	function handleAuthClick() {
+		if (gapi === null) return;
+
 		if (tokenClient !== null) {
 			tokenClient.callback = async (resp: any) => {
 				if (resp.error !== undefined) throw resp;
