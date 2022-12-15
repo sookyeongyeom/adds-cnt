@@ -225,6 +225,7 @@ namespace S {
 
 		td {
 			padding: 0.5rem 2rem;
+			padding-bottom: 0.6rem;
 		}
 	`;
 
