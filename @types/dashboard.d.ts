@@ -51,6 +51,7 @@ type FileStatusProps = ChildrenType & {
  * @by DashBoardPatientsList */
 type PatientProps = ChildrenType & {
 	patientId: string;
+	isFocused: boolean;
 };
 
 /**

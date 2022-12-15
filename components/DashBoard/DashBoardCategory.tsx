@@ -16,11 +16,14 @@ namespace S {
 		border-bottom: 0.1rem solid ${Colors.gray300};
 		padding: 1.5rem;
 		background-color: ${Colors.white};
+		position: relative;
+		min-height: 20rem;
 	`;
 
 	export const Title = styled.div`
 		${Fonts.heading18bold}
 		margin-bottom: 1.3rem;
 		color: ${Colors.blue700};
+		text-transform: uppercase;
 	`;
 }
