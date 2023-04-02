@@ -1,7 +1,7 @@
 import * as XLSX from 'xlsx';
 import TestTypes from '../constants/tests';
-import CardSortingTest from '../models/CardSortingTest';
 import Results from '../models/Results';
+import SpanTest from '../models/SpanTest';
 import TrailMakingTest from '../models/TrailMakingTest';
 import WordColorTest from '../models/WordColorTest';
 import { setResults } from '../modules/results';
@@ -27,9 +27,13 @@ export default function readResultFile(
 			if (row) {
 				patientId = `${row.PatientID}`;
 				const testType = row.검사이름;
-				if (testType === TestTypes.cardSorting) {
-					const cardSorting = new CardSortingTest(row.TTtc, row.PEtc, row.NEtc);
-					results.setCardSorting(cardSorting);
+				if (testType === TestTypes.visualSpan) {
+					const visualSpan = new SpanTest(row.Rtc, row.Itc);
+					results.setVisualSpan(visualSpan);
+				}
+				if (testType === TestTypes.digitSpan) {
+					const digitSpan = new SpanTest(row.Rtc, row.Itc);
+					results.setDigitSpan(digitSpan);
 				}
 				if (testType === TestTypes.wordColor) {
 					const wordColor = new WordColorTest(row.TC1, row.TC2, row.TC5);
