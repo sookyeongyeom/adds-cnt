@@ -1,20 +1,30 @@
-import CardSortingTest from './CardSortingTest';
 import WordColorTest from './WordColorTest';
 import TrailMakingTest from './TrailMakingTest';
+import SpanTest from './SpanTest';
 
 export default class Results {
-	private cardSorting: CardSortingTest | null;
 	private wordColor: WordColorTest | null;
 	private trailMaking: TrailMakingTest | null;
+	private visualSpan: SpanTest | null;
+	private digitSpan: SpanTest | null;
 
 	constructor() {
-		this.cardSorting = null;
 		this.wordColor = null;
 		this.trailMaking = null;
+		this.visualSpan = null;
+		this.digitSpan = null;
 	}
 
-	setCardSorting(cardSorting: CardSortingTest) {
-		this.cardSorting = cardSorting;
+	/**
+	 * Setter
+	 */
+
+	setVisualSpan(visualSpan: SpanTest) {
+		this.visualSpan = visualSpan;
+	}
+
+	setDigitSpan(digitSpan: SpanTest) {
+		this.digitSpan = digitSpan;
 	}
 
 	setWordColor(wordColor: WordColorTest) {
@@ -25,8 +35,16 @@ export default class Results {
 		this.trailMaking = trailMaking;
 	}
 
-	getCardSorting() {
-		return this.cardSorting;
+	/**
+	 * Getter
+	 */
+
+	getVisualSpan() {
+		return this.visualSpan;
+	}
+
+	getDigitSpan() {
+		return this.digitSpan;
 	}
 
 	getWordColor() {
