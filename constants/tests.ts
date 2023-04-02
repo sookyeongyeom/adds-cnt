@@ -2,6 +2,8 @@ export default class TestTypes {
 	static cardSorting = 'Card Sorting Test';
 	static wordColor = 'Word-Color Test';
 	static trailMaking = 'Trail Making Test';
+	static visualSpan = 'Visual Span Test';
+	static digitSpan = 'Digit Span Test';
 }
 
 export class CardSortingLabels {
@@ -19,4 +21,9 @@ export class WordColorLabels {
 export class TrailMakingLabels {
 	static TC1 = 'TMT-A';
 	static TC2 = 'TMT-B';
+}
+
+export class SpanLabels {
+	static Rtc = '정방향';
+	static Itc = '역방향';
 }
