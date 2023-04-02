@@ -10,18 +10,25 @@ export default function DashBoardResult() {
 	return (
 		<DashBoardCategory title='Result'>
 			<SC.CategorySection>
-				<div>Card Sorting</div>
+				<div>Visual Span Test</div>
 				<SC.CategoryLine>
-					<SC.CategoryLabel>TTtc</SC.CategoryLabel>
-					{results[focusId] && results[focusId].getCardSorting()?.getTTtc()}
+					<SC.CategoryLabel>Rtc</SC.CategoryLabel>
+					{results[focusId] && results[focusId].getVisualSpan()?.getRtc()}
 				</SC.CategoryLine>
 				<SC.CategoryLine>
-					<SC.CategoryLabel>PEtc</SC.CategoryLabel>
-					{results[focusId] && results[focusId].getCardSorting()?.getPEtc()}
+					<SC.CategoryLabel>Itc</SC.CategoryLabel>
+					{results[focusId] && results[focusId].getVisualSpan()?.getItc()}
+				</SC.CategoryLine>
+			</SC.CategorySection>
+			<SC.CategorySection>
+				<div>Digit Span Test</div>
+				<SC.CategoryLine>
+					<SC.CategoryLabel>Rtc</SC.CategoryLabel>
+					{results[focusId] && results[focusId].getDigitSpan()?.getRtc()}
 				</SC.CategoryLine>
 				<SC.CategoryLine>
-					<SC.CategoryLabel>NEtc</SC.CategoryLabel>
-					{results[focusId] && results[focusId].getCardSorting()?.getNEtc()}
+					<SC.CategoryLabel>Itc</SC.CategoryLabel>
+					{results[focusId] && results[focusId].getDigitSpan()?.getItc()}
 				</SC.CategoryLine>
 			</SC.CategorySection>
 			<SC.CategorySection>
