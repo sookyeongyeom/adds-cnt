@@ -8,10 +8,15 @@ export default function GraphTotal({
 	value1,
 	value2,
 	value3,
+	graphCoefficient = 0.774,
 }: GraphTotalProps) {
 	return (
 		<S.GraphContainer>
-			<S.GraphAxis value1={value1} value2={value2} value3={value3}>
+			<S.GraphAxis
+				value1={value1}
+				value2={value2}
+				value3={value3}
+				graphCoefficient={graphCoefficient}>
 				<div />
 				<div>
 					<div />
@@ -194,7 +199,7 @@ namespace S {
 
 			> div:first-of-type {
 				> div:last-of-type {
-					width: ${(props) => props.value1 && props.value1 * 0.774 + '%'};
+					width: ${(props) => props.value1 && props.value1 * props.graphCoefficient + '%'};
 
 					&::after {
 						content: \'${(props) => props.value1 && props.value1}\';
@@ -204,7 +209,7 @@ namespace S {
 
 			> div:nth-of-type(2) {
 				> div:last-of-type {
-					width: ${(props) => props.value2 && props.value2 * 0.774 + '%'};
+					width: ${(props) => props.value2 && props.value2 * props.graphCoefficient + '%'};
 
 					&::after {
 						content: \'${(props) => props.value2 && props.value2}\';
@@ -214,7 +219,7 @@ namespace S {
 
 			> div:nth-of-type(3) {
 				> div:last-of-type {
-					width: ${(props) => props.value3 && props.value3 * 0.774 + '%'};
+					width: ${(props) => props.value3 && props.value3 * props.graphCoefficient + '%'};
 
 					&::after {
 						content: \'${(props) => props.value3 && props.value3}\';

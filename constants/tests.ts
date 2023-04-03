@@ -4,6 +4,7 @@ export default class TestTypes {
 	static trailMaking = 'Trail Making Test';
 	static visualSpan = 'Visual Span Test';
 	static digitSpan = 'Digit Span Test';
+	static span = 'Span Test';
 }
 
 export class CardSortingLabels {

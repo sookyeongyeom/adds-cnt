@@ -18,12 +18,12 @@ export default function readCommentFile(file: any) {
 
 			rows.forEach((row: any) => {
 				const patientId = `${row.PatientID}`;
-				const cardSorting = row[TestTypes.cardSorting];
+				const span = row[TestTypes.span];
 				const wordColor = row[TestTypes.wordColor];
 				const trailMaking = row[TestTypes.trailMaking];
 				const total = row.Conclusion;
 
-				const comments = new Comments(cardSorting, wordColor, trailMaking, total);
+				const comments = new Comments(span, wordColor, trailMaking, total);
 				commentsTemp[patientId] = comments;
 			});
 

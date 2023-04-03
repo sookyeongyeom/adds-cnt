@@ -2,13 +2,12 @@ import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import { useEffect, useState } from 'react';
 import Profiles from '../../models/Profiles';
-import { CardSortingLabels } from '../../constants/tests';
 import Results from '../../models/Results';
 import { SC } from '../../constants/styled';
-import ReportResultRow from './ReportResultRow';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
 import Comments from '../../models/Comments';
+import ReportSpanRow from './ReportSpanRow';
 
 export default function ReportPage2() {
 	const focusId = useSelector(({ focusId }: RootState) => focusId);
@@ -37,7 +36,7 @@ export default function ReportPage2() {
 			<S.NavyTop src='/assets/page2_남색상단.png' />
 			<S.GrayBottom src='/assets/page2_회색하단.png' />
 			<S.ContentContainer>
-				<S.ProfileTable>
+				{/* <S.ProfileTable>
 					<tbody>
 						<tr>
 							<th>이름</th>
@@ -50,7 +49,7 @@ export default function ReportPage2() {
 							<td>{profile && profile.getDate()}</td>
 						</tr>
 					</tbody>
-				</S.ProfileTable>
+				</S.ProfileTable> */}
 				<S.Contact>
 					안녕하십니까, 연구 참여 아동의 인지기능평가 결과를 보내드립니다. 결과와 관련하여
 					문의사항이 있으시면 연락주십시오. 감사합니다. *담당연구원: 오서진(임상심리전문가), 연락처:{' '}
@@ -165,19 +164,17 @@ export default function ReportPage2() {
 						</table>
 					</section>
 				</S.Row2>
-				<ReportResultRow
-					title={'1. 위스콘신 카드분류 검사'}
-					titleEng={'(Wisconsin Card Sorting Test, WCST)'}
+				<ReportSpanRow
+					visualRtc={result?.getVisualSpan()?.getRtc() ?? 0}
+					visualItc={result?.getVisualSpan()?.getItc() ?? 0}
+					digitRtc={result?.getDigitSpan()?.getRtc() ?? 0}
+					digitItc={result?.getDigitSpan()?.getItc() ?? 0}
+					title={'1. 시각 & 청각 주의력 및 작업기억력 검사'}
+					titleEng={'(Visual Span & Digit Span)'}
 					subtitle={
-						'본 검사는 실행기능 중에서도 특히 추상적 문제해결력, 인지적 융통성, 즉 필요에 따라 반응 경향을 바꾸는 능력 (i.e. set-shifting)을 평가합니다.'
+						"시각 주의폭 검사와 청각 주의폭 검사: '정방향(순서대로 따라하기)' 과제는 기계적 암기력과 단순주의력을 평가하며, '역방향(거꾸로 따라하기)' 과제는 작업기억력, 정신적 조작 능력을 평가합니다. 작업기억력(working memory)이란, 머릿속에 입력된 정보를 잠시 동안 유지하면서 원하는 정보를 떠올려 활용하는 능력으로, 학습 및 과제 수행에 필수적인 인지능력으로 알려져 있습니다."
 					}
-					label1={`${CardSortingLabels.TTtc}`}
-					label2={`${CardSortingLabels.PEtc}`}
-					label3={`${CardSortingLabels.NEtc}`}
-					value1={result?.getCardSorting()?.getTTtc() as number}
-					value2={result?.getCardSorting()?.getPEtc() as number}
-					value3={result?.getCardSorting()?.getNEtc() as number}
-					comment={comment?.getCardSortingComment()}
+					comment={comment?.getSpanComment()}
 				/>
 			</S.ContentContainer>
 		</S.Page2Container>
@@ -204,7 +201,7 @@ namespace S {
 
 	export const ContentContainer = styled.div`
 		height: 100%;
-		padding: 7rem 3rem 5rem 3rem;
+		padding: 6.2rem 3rem 5rem 3rem;
 	`;
 
 	export const ProfileTable = styled.table`
@@ -234,13 +231,13 @@ namespace S {
 		text-align: left;
 		word-break: keep-all;
 		line-height: 135%;
-		margin-bottom: 1rem;
+		margin-bottom: 0.5rem;
 	`;
 
 	export const Row1 = styled(SC.Row)`
 		display: flex;
 		align-items: center;
-		margin-bottom: 1rem;
+		margin-bottom: 0.5rem;
 
 		> section {
 			background-color: ${Colors.blue200};
@@ -248,7 +245,7 @@ namespace S {
 			flex-direction: column;
 			justify-content: center;
 			gap: 1.5rem;
-			padding: 1.5rem;
+			padding: 1.1rem;
 			text-align: left;
 			word-break: keep-all;
 
@@ -276,7 +273,7 @@ namespace S {
 	export const Row2 = styled(SC.Row)`
 		text-align: left;
 		gap: 2rem;
-		margin-bottom: 1.4rem;
+		margin-bottom: 0.5rem;
 
 		section:first-of-type {
 			/* 점수대별 수준 해석하기 */

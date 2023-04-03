@@ -1,23 +1,23 @@
 export default class Comments {
-	private cardSortingComment: string;
+	private spanComment: string;
 	private wordColorComment: string;
 	private trailMakingComment: string;
 	private totalComment: string;
 
 	constructor(
-		cardSortingComment: string,
+		spanComment: string,
 		wordColorComment: string,
 		trailMakingComment: string,
 		totalComment: string,
 	) {
-		this.cardSortingComment = cardSortingComment;
+		this.spanComment = spanComment;
 		this.wordColorComment = wordColorComment;
 		this.trailMakingComment = trailMakingComment;
 		this.totalComment = totalComment;
 	}
 
-	getCardSortingComment() {
-		return this.cardSortingComment;
+	getSpanComment() {
+		return this.spanComment;
 	}
 
 	getWordColorComment() {

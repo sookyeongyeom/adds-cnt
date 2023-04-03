@@ -18,7 +18,7 @@ export default function ReportPage1() {
 			<S.Title>
 				<S.TitleBorder src='/assets/page1_border.png' />
 				<h1>
-					2022 ADDS Yonsei
+					2023 ADDS Yonsei
 					<br />
 					인지기능검사 결과 보고서
 				</h1>

@@ -91,7 +91,7 @@ namespace S {
 			display: flex;
 			flex-direction: column;
 			margin-top: 1.5rem;
-			height: 25.5rem;
+			height: 26rem;
 			overflow: hidden;
 
 			> h1 {

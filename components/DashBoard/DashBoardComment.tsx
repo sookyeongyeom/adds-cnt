@@ -14,8 +14,8 @@ export default function DashBoardComment() {
 			{Object.keys(comments).length ? (
 				<>
 					<SC.CategorySection>
-						<div>Card Sorting</div>
-						<S.Comment>{comments[focusId] && comments[focusId].getCardSortingComment()}</S.Comment>
+						<div>Span</div>
+						<S.Comment>{comments[focusId] && comments[focusId].getSpanComment()}</S.Comment>
 					</SC.CategorySection>
 					<SC.CategorySection>
 						<div>Word Color</div>
