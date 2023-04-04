@@ -52,8 +52,8 @@ export default function ReportPage2() {
 				</S.ProfileTable> */}
 				<S.Contact>
 					안녕하십니까, 연구 참여 아동의 인지기능평가 결과를 보내드립니다. 결과와 관련하여
-					문의사항이 있으시면 연락주십시오. 감사합니다. *담당연구원: 오서진(임상심리전문가), 연락처:{' '}
-					<SC.Underline>addsyonsei@yonsei.ac.kr</SC.Underline> / 010-2763-3149
+					문의사항이 있으시면 연락주십시오. 감사합니다. *상담연락처: 010-8317-3149 /{' '}
+					addsyonsei@yonsei.ac.kr
 				</S.Contact>
 				<S.Row1>
 					<section>
@@ -68,17 +68,18 @@ export default function ReportPage2() {
 						<div>
 							<div>·</div>
 							<div>
-								<SC.Emp>하위 영역</SC.Emp>으로는 상황을 미리 예측하고 계획을 세우는 능력(계획력),
-								과제나 상황에 따라 대안을 생각하고 유연하게 사고하는 능력(인지적 융통성), 목표행동을
-								달성하기 위해 불필요한 자극을 무시하고 행동을 억제하는 능력(행동억제 능력), 상황의
-								요구에 따라 주의를 조절하고 변경할 수 있는 능력(주의조절력) 등이 포함됩니다.
+								<SC.Emp>하위 영역</SC.Emp>으로는 정보를 잠시동안 머릿속에 저장한 상태로 문제해결에
+								활용하는 능력(작업기억력), 과제나 상황에 따라 대안을 생각하고 유연하게 사고하는
+								능력(인지적 융통성), 목표행동을 달성하기 위해 불필요한 자극을 무시하고 행동을
+								억제하는 능력(행동억제 능력), 상황의 요구에 따라 주의를 조절하고 변경할 수 있는
+								능력(주의조절력), 계획력 등이 포함됩니다.
 							</div>
 						</div>
 						<div>
 							<div>·</div>
 							<div>
 								본 연구에서는 전산화된(computerized) 평가도구인 CNT 4.0을 활용하여 실행기능을
-								평가하는 대표적인 검사 3가지를 실시하였습니다.
+								평가하는 대표적인 검사를 실시하였습니다.
 							</div>
 						</div>
 						<div>
@@ -244,7 +245,7 @@ namespace S {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-			gap: 1.5rem;
+			gap: 0.85rem;
 			padding: 1.1rem;
 			text-align: left;
 			word-break: keep-all;
