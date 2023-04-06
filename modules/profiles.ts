@@ -9,7 +9,7 @@ const initialState: ProfilesValueType = {};
 
 const profiles = handleActions(
 	{
-		[SET_PROFILES]: (state, action) => ({ ...state, ...action.payload }),
+		[SET_PROFILES]: (state, action) => ({ ...action.payload }),
 	},
 	initialState,
 );

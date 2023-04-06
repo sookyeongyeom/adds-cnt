@@ -8,12 +8,17 @@ import Fonts from '../../constants/fonts';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
 import { SC } from '../../constants/styled';
+import { useEffect } from 'react';
 
 export default function DashBoardInspector({ isUIOpen }: DashBoardInspectorProps) {
 	const focusId = useSelector(({ focusId }: RootState) => focusId);
 	const profiles = useSelector(({ profiles }: RootState) => profiles);
 	const authToken = useSelector(({ google }: RootState) => google.authToken);
 	const results = useSelector(({ results }: RootState) => results);
+
+	useEffect(() => {
+		console.log(profiles);
+	}, [profiles]);
 
 	return (
 		<DashBoardDrawer isLeft={false} isUIOpen={isUIOpen}>
