@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 import { CommentsValueType } from '../@types/store';
 
-const SET_COMMENTS = 'results/SET_COMMENTS';
+const SET_COMMENTS = 'comments/SET_COMMENTS';
 
 export const setComments = createAction(SET_COMMENTS, (comments: CommentsValueType) => comments);
 

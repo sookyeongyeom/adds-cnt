@@ -9,13 +9,15 @@ import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { rootSaga } from '../modules/index';
 
-const logger = createLogger();
+// const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();
 
-const enhancer =
-	process.env.NODE_ENV === 'production'
-		? composeWithDevTools(applyMiddleware(sagaMiddleware))
-		: composeWithDevTools(applyMiddleware(logger, sagaMiddleware));
+// const enhancer =
+// 	process.env.NODE_ENV === 'production'
+// 		? composeWithDevTools(applyMiddleware(sagaMiddleware))
+// 		: composeWithDevTools(applyMiddleware(logger, sagaMiddleware));
+
+const enhancer = composeWithDevTools(applyMiddleware(sagaMiddleware));
 
 export const store = createStore(rootReducer, enhancer);
 sagaMiddleware.run(rootSaga);
